@@ -1,0 +1,66 @@
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::TypeError: Cannot destructure property 'services' of 'undefined' as it is undefined."}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::TypeError: Cannot destructure property 'services' of 'undefined' as it is undefined."}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::TypeError: Cannot destructure 'undefined' as it is undefined."}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::TypeError: Cannot destructure property 'services' of 'undefined' as it is undefined."}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::TypeError: Cannot destructure property 'services' of 'undefined' as it is undefined."}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: await is only valid in async functions and the top level bodies of modules"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"path":"limit"}}
+{"level":"error","message":{}}
+{"level":"error","message":{"path":"offset._types"}}
+{"level":"error","message":{"path":"offset"}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"path":"status"}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"path":"id._types"}}
+{"level":"error","message":{"path":"id"}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
