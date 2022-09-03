@@ -11,7 +11,7 @@ const hospitalSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    user: {
+    users: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,

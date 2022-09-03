@@ -10,19 +10,21 @@ async function getResponse(user) {
   const { hospitalService } = require(".");
   let onboardingDone = true;
   if (user.role.toString() === config.migrationIDS.HOSPITAL_ADMIN_ID) {
-    const hospital = await hospitalService().getHospitalById(user.hopsital);
-    onboardingDone = !!hospital;
+    const hospital = await hospitalService().getHospitalById(user.hospital);
+    onboardingDone = !hospital;
   }
   user = user.toObject();
   const option = {};
   delete user.password;
   delete user.role;
-  //if (!user.isHospitalMgt) delete user.hospital;
+  delete user.token;
+  if (!user.isHospitalMgt) delete user.hospital;
   // if (user.isHospitalMgt) option.hospital = user.hospital._id;
   delete user.isAdmin;
 
   return {
     user,
+    onboardingDone,
     token: await sign({
       user: user._id,
       ...option,
@@ -69,7 +71,7 @@ module.exports = {
               Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
             user.token = token;
             if (!user.password) user.password = user.email;
-            user.password = await hashManager().hash(user.passowrd);
+            user.password = await hashManager().hash(user.password);
             const newUser = await User.create(user);
             return {
               msg: constants.SUCCESS,
@@ -82,6 +84,7 @@ module.exports = {
             level: "error",
             message: ex,
           });
+          return { error: constants.GONE_BAD };
         }
       },
       async activateUser(userId, token) {
@@ -105,19 +108,21 @@ module.exports = {
           if (updateUser) {
             return await getResponse(updateUser);
           }
+          return { error: constants.INVALID_TOKEN };
         } catch (ex) {
           logger.log({
             level: "error",
             message: ex,
           });
+          return { error: constants.GONE_BAD };
         }
       },
       async signInUser(user) {
         try {
           const dbUser = await User.findOne({
             $or: [
-              { email: user.emailEmailMobile },
-              { mobile: user.emailEmailMobile },
+              { email: user.userEmailMobile },
+              { mobile: user.userEmailMobile },
             ],
           }).populate("hospital", "_id hospitalName");
 
@@ -126,7 +131,7 @@ module.exports = {
           }
           const { _id } = dbUser;
           const validatePassword = await hashManager().compare(
-            user.passowrd,
+            user.password,
             dbUser.password
           );
           if (dbUser && validatePassword) {
@@ -136,8 +141,8 @@ module.exports = {
               await User.findOneAndUpdate(
                 {
                   $or: [
-                    { email: user.emailEmailMobile },
-                    { mobile: user.emailEmailMobile },
+                    { email: user.userEmailMobile },
+                    { mobile: user.userEmailMobile },
                   ],
                 },
                 { token },
@@ -162,13 +167,11 @@ module.exports = {
             level: "error",
             message: ex,
           });
+          throw new Error(ex.message);
         }
       },
-      async getAll({ offset = 0, limit = 100, status, state, activated } = {}) {
+      async getAll({ offset = 0, limit = 100, status, activated } = {}) {
         const query = {};
-        if (state) {
-          query.state = state;
-        }
         if (status) {
           query.status = status;
         }
@@ -212,10 +215,10 @@ module.exports = {
       async resetPassword({ newPassword }, userId) {
         try {
           if (!isValidObjectId(userId)) return constants.NOT_FOUND;
-          const passowrd = await hashManager().hash(newPassword);
+          const password = await hashManager().hash(newPassword);
           const updateUser = await User.findOneAndUpdate(
             { _id: userId },
-            { passowrd },
+            { password },
             { new: true }
           );
           if (updateUser) {

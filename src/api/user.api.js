@@ -7,15 +7,13 @@ module.exports = (server, prefix) => {
   namespace(server, prefix, [
     {
       method: "Post",
-      path: "/user/login",
+      path: "/login",
       config: {
         description: "sign in",
         tags: ["api", "user"],
-        auth: "simple",
         validate: {
           payload: Joi.object({
             userEmailMobile: Joi.string()
-              .email()
               .required()
               .lowercase()
               .trim()
@@ -30,77 +28,172 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/",
+      method: "Post",
+      path: "/hospital/employee",
       config: {
-        description: "get all hospitals",
-        tags: ["api", "hospital"],
+        description: "create an hospital employee",
+        tags: ["api", "user"],
         auth: "simple",
         validate: {
-          query: Joi.object({
-            limit: Joi.number().description("max number  to be fetch"),
-            offset: Joi.number().description("number of items to be skipped"),
-            status: Joi.string().description("Active, inactive"),
+          payload: Joi.object({
+            email: Joi.string()
+              .email()
+              .required()
+              .lowercase()
+              .trim()
+              .prefs({ convert: true }),
+            role: Joi.string()
+              .required()
+              .max(24)
+              .min(24)
+              .description("user role"),
+            firstname: Joi.string().required(),
+            lastname: Joi.string().required(),
+            gender: Joi.string().optional().valid("MALE", "FEMALE"),
+            mobile: Joi.string().required(),
           }),
           failAction: async (request, h, err) => {
             throw err;
           },
         },
-        handler: hospitalControllers.getAll,
+        handler: userControllers.createHospitalUser,
+      },
+    },
+    // {
+    //   method: "Post",
+    //   path: "/hospital/employee",
+    //   config: {
+    //     description: "create an hospital employee",
+    //     tags: ["api", "user"],
+    //     auth: "simple",
+    //     validate: {
+    //       payload: Joi.object({
+    //         email: Joi.string()
+    //           .email()
+    //           .required()
+    //           .lowercase()
+    //           .trim()
+    //           .prefs({ convert: true }),
+    //         role: Joi.string()
+    //           .required()
+    //           .max(24)
+    //           .min(24)
+    //           .description("user role"),
+    //         firstname: Joi.string().required(),
+    //         lastname: Joi.string().required(),
+    //         gender: Joi.string().optional().valid("MALE", "FEMALE"),
+    //         mobile: Joi.string().required(),
+    //       }),
+    //       failAction: async (request, h, err) => {
+    //         throw err;
+    //       },
+    //     },
+    //     handler: userControllers.createHospitalUser,
+    //   },
+    // },
+    {
+      method: "Post",
+      path: "/reset-password",
+      config: {
+        description: "reset user password",
+        tags: ["api", "user"],
+        auth: "simple",
+        validate: {
+          payload: Joi.object({
+            newPassword: Joi.string()
+              .required()
+              .description("new user password"),
+          }),
+          failAction: async (request, h, err) => {
+            throw err;
+          },
+        },
+        handler: userControllers.resetPassword,
       },
     },
     {
       method: "Get",
-      path: "/hospital/{id}",
+      path: "/activate/{userId}/{token}/user",
       config: {
-        description: "get  hospital by id",
-        tags: ["api", "hospital"],
-        auth: "simple",
+        description: "activate account",
+        tags: ["api", "users"],
         validate: {
           params: Joi.object({
-            id: Joi.string()
-              .required()
-              .min(24)
-              .max(24)
-              .description("hospital id"),
+            token: Joi.number().description("token"),
+            userId: Joi.string().max(24).min(24),
           }),
           failAction: async (request, h, err) => {
             throw err;
           },
         },
-        handler: hospitalControllers.getHospital,
+        handler: userControllers.activateUser,
+      },
+    },
+    {
+      method: "Get",
+      path: "/{id}",
+      config: {
+        description: "get user by id",
+        tags: ["api", "user"],
+        auth: "simple",
+        validate: {
+          params: Joi.object({
+            id: Joi.string().required().min(24).max(24).description("user id"),
+          }),
+          failAction: async (request, h, err) => {
+            throw err;
+          },
+        },
+        handler: userControllers.getUser,
+      },
+    },
+    {
+      method: "Get",
+      path: "/",
+      config: {
+        description: "get all users",
+        tags: ["api", "user"],
+        auth: "simple",
+        validate: {
+          query: Joi.object({
+            limit: Joi.number(),
+            offset: Joi.number(),
+            status: Joi.string().optional().valid("ACTIVE", "INACTIVE"),
+            activated: Joi.boolean().optional(),
+          }),
+          failAction: async (request, h, err) => {
+            throw err;
+          },
+        },
+        handler: userControllers.getAll,
       },
     },
     {
       method: "Patch",
-      path: "/hospital/update",
+      path: "/hospital/user",
       config: {
-        description: "update a hospital",
-        tags: ["api", "hospital"],
+        description: "update a hospital user",
+        tags: ["api", "users"],
         auth: "simple",
         validate: {
           payload: Joi.object({
-            state: Joi.string().optional().example("Jeti"),
-            hospitalAddress: Joi.string().optional().example("Jeti"),
-            instagramHandle: Joi.string().optional().example("Jeti"),
-            facebookHandle: Joi.string().optional().example("Jeti"),
-            twitterHandle: Joi.string().optional().example("Jeti"),
-            website: Joi.string().optional().example("Jeti"),
-            secondaryMobile: Joi.string().optional().example("Jeti"),
+            gender: Joi.string().optional().example("Jeti"),
+            dob: Joi.string().optional().example("Jeti"),
+            mobile: Joi.string().optional().example("Jeti"),
           }),
           failAction: async (request, h, err) => {
             throw err;
           },
         },
-        handler: hospitalControllers.updateHospital,
+        handler: userControllers.updateUser,
       },
     },
     {
       method: "Delete",
-      path: "/hospital",
+      path: "/user",
       config: {
-        description: "delete hospital",
-        tags: ["api", "hospitals"],
+        description: "delete a user",
+        tags: ["api", "users"],
         auth: "simple",
         validate: {
           payload: Joi.object({
@@ -110,7 +203,7 @@ module.exports = (server, prefix) => {
             throw err;
           },
         },
-        handler: hospitalControllers.deleteHospital,
+        handler: userControllers.deactivateUser,
       },
     },
   ]);

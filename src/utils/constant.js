@@ -7,8 +7,11 @@ module.exports = Object.freeze({
     EMPTY_PAYLOAD: 'Payload Is Empty',
     DUPLICATE_USER:
     'Hey we seem to have your records, kindly login with your email or phone number',
+    DUPLICATE_HOSPITAL:
+    'Hey we seem to have your records, kindly login with your email or phone number',
     INVALID_USER: 'Invalid User Credentials',
     TOKEN_RANGE: 10000,
     ACCOUNT_NOT_ACTIVATED: 'Account Is Not Activated',
     HOSPITALS: 'hospital',
+    INVALID_TOKEN: 'Invalid Details or this account has been activated',
 })

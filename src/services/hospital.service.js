@@ -1,6 +1,7 @@
 const config = require("config");
 const { isValidObjectId } = require("mongoose");
 const { Hospital } = require("../models/hospital");
+const { User } = require("../models/user");
 const logger = require("../lib/logger");
 const constants = require("../utils/constant");
 
@@ -19,9 +20,11 @@ module.exports = {
           const validate = await checkIfHospitalExist(hospital);
           if (!validate) {
             const newHospital = await Hospital.create(hospital);
+            const { _id: hospitalId, users } = newHospital;
+            await User.findByIdAndUpdate(users[0], { hospital: hospitalId });
             return {
               msg: constants.SUCCESS,
-              hospitalId: newHospital._id,
+              hospitalId,
             };
           }
           return { error: constants.DUPLICATE_HOSPITAL };
@@ -30,6 +33,7 @@ module.exports = {
             level: "error",
             message: ex,
           });
+          return { error: constants.GONE_BAD };
         }
       },
       async getAll({ offset = 0, limit = 100, status } = {}) {
@@ -52,7 +56,10 @@ module.exports = {
       async getHospitalById(hospitalId) {
         try {
           if (!isValidObjectId(hospitalId)) return constants.NOT_FOUND;
-          const hospital = await Hospital.findById(hospitalId);
+          const hospital = await Hospital.findById(hospitalId).populate(
+            "users",
+            "fistname lastname"
+          );
           if (!hospital) {
             return {
               error: constants.NOT_FOUND,
@@ -64,6 +71,7 @@ module.exports = {
             level: "error",
             message: ex,
           });
+          return { error: constants.GONE_BAD };
         }
       },
       async updateHospital(hospitalId, payload) {

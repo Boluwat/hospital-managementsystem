@@ -90,7 +90,10 @@ const deleteHospital = async (request) => {
   const { hospital } = await verify(request.auth.credentials.token);
   const { password } = request.payload;
   const response =
-    await request.server.app.services.hospitals.deactivateAccount(hospital, password);
+    await request.server.app.services.hospitals.deactivateAccount(
+      hospital,
+      password
+    );
   if (response.error) {
     return error(400, response.error);
   }

@@ -11,7 +11,6 @@ module.exports = (server, prefix) => {
       config: {
         description: "create a hospital",
         tags: ["api", "hospital"],
-        auth: "simple",
         validate: {
           payload: Joi.object({
             email: Joi.string()
@@ -55,7 +54,7 @@ module.exports = (server, prefix) => {
     },
     {
       method: "Get",
-      path: "/hospital/{id}",
+      path: "/{id}",
       config: {
         description: "get  hospital by id",
         tags: ["api", "hospital"],
@@ -77,7 +76,7 @@ module.exports = (server, prefix) => {
     },
     {
       method: "Patch",
-      path: "/hospital/update",
+      path: "/update",
       config: {
         description: "update a hospital",
         tags: ["api", "hospital"],
@@ -101,7 +100,7 @@ module.exports = (server, prefix) => {
     },
     {
       method: "Delete",
-      path: "/hospital",
+      path: "/",
       config: {
         description: "delete hospital",
         tags: ["api", "hospitals"],

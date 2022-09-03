@@ -64,3 +64,66 @@
 {"level":"error","message":{}}
 {"level":"error","message":{}}
 {"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"_message":"User validation failed","errors":{"activated":{"kind":"required","message":"Path `activated` is required.","name":"ValidatorError","path":"activated","properties":{"message":"Path `activated` is required.","path":"activated","type":"required"}},"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"User validation failed: hospital: Path `hospital` is required., activated: Path `activated` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"User validation failed","errors":{"activated":{"kind":"required","message":"Path `activated` is required.","name":"ValidatorError","path":"activated","properties":{"message":"Path `activated` is required.","path":"activated","type":"required"}},"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"User validation failed: hospital: Path `hospital` is required., activated: Path `activated` is required.","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ':'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":{"isImmutableError":false,"path":"users"}}
+{"level":"error","message":{"_message":"Hospital validation failed","errors":{"users":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"CastError","path":"users","reason":{},"stringValue":"\"[ undefined ]\"","value":[null],"valueType":"Array"}},"message":"Hospital validation failed: users: Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Hospital validation failed","errors":{"users":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"CastError","path":"users","reason":{},"stringValue":"\"[ undefined ]\"","value":[null],"valueType":"Array"}},"message":"Hospital validation failed: users: Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Hospital validation failed","errors":{"users":{"kind":"required","message":"Path `users` is required.","name":"ValidatorError","path":"users","properties":{"message":"Path `users` is required.","path":"users","type":"required"}}},"message":"Hospital validation failed: users: Path `users` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Hospital validation failed","errors":{"users":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"CastError","path":"users","reason":{},"stringValue":"\"[ undefined ]\"","value":[null],"valueType":"Array"}},"message":"Hospital validation failed: users: Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Hospital validation failed","errors":{"users":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"CastError","path":"users","reason":{},"stringValue":"\"[ undefined ]\"","value":[null],"valueType":"Array"}},"message":"Hospital validation failed: users: Cast to ObjectId failed for value \"[ undefined ]\" (type Array) at path \"users\" because of \"BSONTypeError\"","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ';'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ')'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ';'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ')'"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '{'"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{}}

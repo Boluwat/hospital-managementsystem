@@ -1,77 +1,80 @@
-const mongoose = require('mongoose');
-const { validateRole } = require('../role/validate');
-const { validateHospital } = require('../hospital/validate');
+const mongoose = require("mongoose");
+const { validateRole } = require("../role/validate");
+const { validateHospital } = require("../hospital/validate");
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     firstname: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     lastname: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true,
-        index: {
-            unique: true
-        }
+      type: String,
+      required: true,
+      index: {
+        unique: true,
+      },
     },
     isHospitalMgt: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     mobile: {
-        type: String,
-        required: true,
-        index: {
-            unique: true
-        }
+      type: String,
+      required: true,
+      index: {
+        unique: true,
+      },
     },
     activated: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      default: false,
     },
     gender: {
-        type: String,
-        enum: ['MALE', 'FEMALE'],
+      type: String,
+      enum: ["MALE", "FEMALE"],
     },
     dob: {
-        type: Date,
+      type: Date,
     },
     role: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Role',
-        required: true,
-        index: true,
-        validate: validateRole,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+      required: true,
+      index: true,
+      validate: validateRole,
     },
     hospital: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Hospital',
-        required: true,
-        index: true,
-        validate: validateHospital,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Hospital",
+      index: true,
+      sparse: true,
+      validate: validateHospital,
     },
     password: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     token: {
-        type: String,
+      type: String,
     },
     state: {
-        type: String,
+      type: String,
     },
     status: {
-        type: String,
-        default: 'INACTIVE',
-        enum: ['ACTIVE', 'INACTIVE', 'TERMINATED'],
+      type: String,
+      default: "INACTIVE",
+      enum: ["ACTIVE", "INACTIVE", "TERMINATED"],
     },
-}, { strict: 'throw', timestamps: true });
+  },
+  { strict: "throw", timestamps: true }
+);
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = {
-    User
-}
+  User,
+};
