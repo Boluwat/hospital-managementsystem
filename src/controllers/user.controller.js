@@ -17,7 +17,7 @@ const signInCustomUser = async (request, reply) => {
     }
     return error(401, response.error);
   }
-  
+
   return response;
 };
 
@@ -42,10 +42,10 @@ const createUser = async (request, type) => {
     return error(403, "unathorized");
   }
   const validateData = validateSignUpData(user);
-  const query = {};
   if (validateData.error) return validateData.error;
-
+  const query = {};
   const { hospital } = await verify(request.auth.credentials.token);
+  
   if (hospital) {
     query.hospital = hospital;
     validateData.hospital = hospital;

@@ -26,6 +26,6 @@ module.exports = {
     },
     async confirmHospitalAdmin(request) {
         const { user, hospital } = await jwt.verify(request.auth.credentials.token, config.jwtSecret);
-        return await request.server.app.services.admin.isAdmin('hospital', user, hospital);
+        return await request.server.app.services.users.isAdmin('hospital', user, hospital);
     }
 }

@@ -127,3 +127,10 @@
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
 {"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Identifier 'module' has already been declared"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::TypeError [ERR_INVALID_ARG_VALUE]: The argument 'id' must be a non-empty string. Received ''"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Identifier 'mongoose' has already been declared"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Identifier 'mongoose' has already been declared"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Identifier 'mongoose' has already been declared"}
+{"level":"error","message":"failed to start server:::::ReferenceError: admin is not defined"}

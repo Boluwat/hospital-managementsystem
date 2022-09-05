@@ -1,4 +1,3 @@
-const config = require("config");
 const { isValidObjectId } = require("mongoose");
 const { Hospital } = require("../models/hospital");
 const { User } = require("../models/user");

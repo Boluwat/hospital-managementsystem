@@ -1,7 +1,8 @@
 const {
     roleService,
     hospitalService,
-    userService
+    userService,
+    adminService
 } = require('.');
 
 
@@ -9,6 +10,7 @@ const createServices = () => ({
     roles: roleService(),
     hospitals: hospitalService(),
     users: userService(),
+    admin: adminService(),
 });
 
 module.exports = {
