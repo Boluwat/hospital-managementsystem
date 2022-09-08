@@ -52,12 +52,12 @@ module.exports = {
           _id: user,
           status: "ACTIVE",
         };
-        if (type == "main") {
+        if (type === "main") {
           query.role = { $in: config.migrationIDS.ADMIN_ROLE_IDS };
           query.isAdmin = true;
         } else {
           query.role = config.migrationIDS.HOSPITAL_ADMIN_ID;
-          query.issHospitalMgt = true;
+          query.isHospitalMgt = true;
           query.hospital = hospital;
         }
         const admin = await User.findOne(query);

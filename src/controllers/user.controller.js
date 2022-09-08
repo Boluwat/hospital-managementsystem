@@ -45,7 +45,7 @@ const createUser = async (request, type) => {
   if (validateData.error) return validateData.error;
   const query = {};
   const { hospital } = await verify(request.auth.credentials.token);
-  
+
   if (hospital) {
     query.hospital = hospital;
     validateData.hospital = hospital;
@@ -62,6 +62,7 @@ const createUser = async (request, type) => {
 
 const createHospitalUser = async (request) =>
   await createUser(request, constants.HOSPITALS);
+  
 
 const createAdminUser = async (request) => await createUser(request, "Admin");
 

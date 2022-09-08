@@ -134,3 +134,7 @@
 {"level":"error","message":"failed to start server:::::SyntaxError: Identifier 'mongoose' has already been declared"}
 {"level":"error","message":"failed to start server:::::SyntaxError: Identifier 'mongoose' has already been declared"}
 {"level":"error","message":"failed to start server:::::ReferenceError: admin is not defined"}
+{"level":"error","message":{"expiredAt":"2022-09-05T02:41:51.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{"code":11000,"index":0,"keyPattern":{"mobile":1},"keyValue":{"mobile":"+2349080516091"}}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}

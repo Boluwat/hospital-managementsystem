@@ -27,38 +27,6 @@ module.exports = (server, prefix) => {
         handler: userControllers.signInCustomUser,
       },
     },
-    {
-      method: "Post",
-      path: "/hospital/employee",
-      config: {
-        description: "create an hospital employee",
-        tags: ["api", "user"],
-        auth: "simple",
-        validate: {
-          payload: Joi.object({
-            email: Joi.string()
-              .email()
-              .required()
-              .lowercase()
-              .trim()
-              .prefs({ convert: true }),
-            role: Joi.string()
-              .required()
-              .max(24)
-              .min(24)
-              .description("user role"),
-            firstname: Joi.string().required(),
-            lastname: Joi.string().required(),
-            gender: Joi.string().optional().valid("MALE", "FEMALE"),
-            mobile: Joi.string().required(),
-          }),
-          failAction: async (request, h, err) => {
-            throw err;
-          },
-        },
-        handler: userControllers.createHospitalUser,
-      },
-    },
     // {
     //   method: "Post",
     //   path: "/hospital/employee",

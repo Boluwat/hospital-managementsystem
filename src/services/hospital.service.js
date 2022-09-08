@@ -90,39 +90,39 @@ module.exports = {
         }
         return { error: constants.NOT_FOUND };
       },
-      async deactivateAccount(hospitalId, password) {
-        try {
-          if (!isValidObjectId(hospitalId)) return constants.NOT_FOUND;
-          const hospital = await Hospital.findById(hospitalId);
-          if (!hospital) return { error: constants.NOT_FOUND };
-          const validatePassword = await hashManager().compare(
-            password,
-            user.password
-          );
-          if (validatePassword) {
-            const updatedhopital = await Hospital.findOneAndUpdate(
-              {
-                _id: hospitalId,
-              },
-              {
-                status: "INACTIVE",
-              },
-              {
-                new: true,
-              }
-            );
-            if (updatedhopital) {
-              return { response: constants.SUCCESS };
-            }
-          }
-          return { error: constants.INVALID_USER };
-        } catch (ex) {
-          logger.log({
-            level: "error",
-            message: ex,
-          });
-        }
-      },
+      // async deactivateAccount(hospitalId, password, user) {
+      //   try {
+      //     if (!isValidObjectId(hospitalId)) return constants.NOT_FOUND;
+      //     const hospital = await Hospital.findById(hospitalId);
+      //     if (!hospital) return { error: constants.NOT_FOUND };
+      //     const validatePassword = await hashManager().compare(
+      //       password,
+      //       user.password
+      //     );
+      //     if (validatePassword) {
+      //       const updatedhopital = await Hospital.findOneAndUpdate(
+      //         {
+      //           _id: hospitalId,
+      //         },
+      //         {
+      //           status: "INACTIVE",
+      //         },
+      //         {
+      //           new: true,
+      //         }
+      //       );
+      //       if (updatedhopital) {
+      //         return { response: constants.SUCCESS };
+      //       }
+      //     }
+      //     return { error: constants.INVALID_USER };
+      //   } catch (ex) {
+      //     logger.log({
+      //       level: "error",
+      //       message: ex,
+      //     });
+      //   }
+      // },
     };
   },
 };
