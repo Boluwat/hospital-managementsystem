@@ -45,6 +45,13 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    mobile: {
+      type: String,
+      required: true,
+      index: {
+        unique: true,
+      },
+    },
     status: {
       type: Boolean,
       default: true,
@@ -53,7 +60,7 @@ const employeeSchema = new mongoose.Schema(
   { strict: "throw", timestamps: true }
 );
 
-const Employee = mongoose.model('Employee', employeeSchema)
+const Employee = mongoose.model("Employee", employeeSchema);
 module.exports = {
-    Employee
-}
+  Employee,
+};

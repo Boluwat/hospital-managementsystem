@@ -9,9 +9,8 @@ module.exports = {
       async create(payload) {
         try {
           const employee = await Employee.findOne({
-            firstname: payload.firstname,
-            lastname: payload.lastname,
-            // user: payload.employee.user
+            email: payload.email,
+            mobile: payload.mobile
           });
           if (employee) {
             return {

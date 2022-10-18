@@ -138,3 +138,57 @@
 {"level":"error","message":{"code":11000,"index":0,"keyPattern":{"mobile":1},"keyValue":{"mobile":"+2349080516091"}}}
 {"level":"error","message":{}}
 {"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected end of input"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ';'"}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"expiredAt":"2022-10-13T09:11:19.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'return'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected reserved word"}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{}}
+{"level":"error","message":{"expiredAt":"2022-10-15T21:39:31.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{"expiredAt":"2022-10-15T21:39:31.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{"isImmutableError":false,"path":"name"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Patient validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Patient validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"isImmutableError":false,"path":"patientId"}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '/'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Invalid or unexpected token"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ','"}
+{"level":"error","message":{}}

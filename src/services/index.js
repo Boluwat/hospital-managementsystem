@@ -3,6 +3,7 @@ const { hospitalService } = require("./hospital.service");
 const { userService } = require("./user.service");
 const { adminService } = require("./admin.service");
 const { employeeService } = require("./employee.service");
+const { patientService } = require("./patients");
 
 module.exports = {
   roleService,
@@ -10,4 +11,5 @@ module.exports = {
   userService,
   adminService,
   employeeService,
+  patientService,
 };

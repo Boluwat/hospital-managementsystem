@@ -6,7 +6,7 @@ const constants = require("../utils/constant");
 
 async function checkIfHospitalExist(hospital) {
   const hospitalExist = await Hospital.findOne({
-    $or: [{ email: hospital.email }, { mobile: hospital.mobile }],
+    $or: [{ email: hospital.email }, { mobile: hospital.mobile }, {hospitalName: hospital.hospitalName}],
   });
   return hospitalExist;
 }
@@ -20,7 +20,7 @@ module.exports = {
           if (!validate) {
             const newHospital = await Hospital.create(hospital);
             const { _id: hospitalId, users } = newHospital;
-            await User.findByIdAndUpdate(users[0], { hospital: hospitalId });
+            await User.findByIdAndUpdate(users, { hospital: hospitalId });
             return {
               msg: constants.SUCCESS,
               hospitalId,

@@ -38,7 +38,7 @@ module.exports = (server, prefix) => {
       config: {
         description: "get all hospitals",
         tags: ["api", "hospital"],
-        auth: "simple",
+        // auth: "simple",
         validate: {
           query: Joi.object({
             limit: Joi.number().description("max number  to be fetch"),
@@ -58,7 +58,7 @@ module.exports = (server, prefix) => {
       config: {
         description: "get  hospital by id",
         tags: ["api", "hospital"],
-        auth: "simple",
+        // auth: "simple",
         validate: {
           params: Joi.object({
             id: Joi.string()

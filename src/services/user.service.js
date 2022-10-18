@@ -11,15 +11,14 @@ async function getResponse(user) {
   let onboardingDone = true;
   if (user.role.toString() === config.migrationIDS.HOSPITAL_ADMIN_ID) {
     const hospital = await hospitalService().getHospitalById(user.hospital);
-    onboardingDone = !hospital;
+    onboardingDone = !hospital ? false : true;
   }
   user = user.toObject();
   const option = {};
   delete user.password;
   delete user.role;
   delete user.token;
-  if (!user.isHospitalMgt) delete user.hospital;
-  // if (user.isHospitalMgt) option.hospital = user.hospital._id;
+  if (user.isHospitalMgt) option.hospital = user.hospital._id;
   delete user.isAdmin;
 
   return {
