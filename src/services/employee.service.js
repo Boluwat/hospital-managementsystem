@@ -95,7 +95,7 @@ module.exports = {
           return { error: constants.GONE_BAD };
         }
       },
-      async deactivate(employeeId, hospital) {
+      async deactivate(employeeId) {
         try {
           if (!isValidObjectId(employeeId))
             return { error: constants.NOT_FOUND };

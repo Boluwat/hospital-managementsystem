@@ -192,3 +192,4 @@
 {"level":"error","message":"failed to start server:::::SyntaxError: Invalid or unexpected token"}
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ','"}
 {"level":"error","message":{}}
+{"level":"error","message":{}}

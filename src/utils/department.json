@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Accident and Emergency",
+        "status": true
+    },
+    {
+        "name": "Anesthetics",
+        "status": true
+    },
+    {
+        "name": "Burn center",
+        "status": true
+    },
+    {
+        "name": "Cardiology",
+        "status": true
+    },
+    {
+        "name": "Intensive care Unit",
+        "status": true
+    },
+    {
+        "name": "General service",
+        "status": true
+    },
+    {
+        "name": "General surgery",
+        "status": true
+    },
+    {
+        "name": "Gynecology",
+        "status": true
+    },
+    {
+        "name": "Haematology",
+        "status": true
+    },
+    {
+        "name": "Medical Records",
+        "status": true
+    },
+    {
+        "name": "Neurology",
+        "status": true
+    },
+    {
+        "name": "Neonatal",
+        "status": true
+    },
+    {
+        "name": "Finance Department",
+        "status": true
+    },
+    {
+        "name": "Oncology",
+        "status": true
+    },
+    {
+        "name": "Occupational therapy",
+        "status": true
+    },
+    {
+        "name": "Physiotherapy",
+        "status": true
+    },
+    {
+        "name": "Radiotherapy",
+        "status": true
+    },
+    {
+        "name": "Pharmacy",
+        "status": true
+    },
+    {
+        "name": "Urology",
+        "status": true
+    },
+    {
+        "name": "Social work",
+        "status": true
+    }
+]

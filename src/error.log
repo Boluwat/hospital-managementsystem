@@ -58,3 +58,7 @@
 {"level":"error","message":{}}
 {"level":"error","message":{}}
 {"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"address":"127.0.0.1","code":"EADDRINUSE","errno":-4091,"port":3090,"syscall":"listen"}}
+{"level":"error","message":{"address":"127.0.0.1","code":"EADDRINUSE","errno":-4091,"port":3090,"syscall":"listen"}}
