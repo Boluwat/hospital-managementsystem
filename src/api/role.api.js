@@ -10,7 +10,6 @@ module.exports = (server, prefix) => {
       config: {
         description: "create a role",
         tags: ["api", "roles"],
-        auth: "simple",
         validate: {
           payload: Joi.object({
             name: Joi.string().required().example("Jeti"),

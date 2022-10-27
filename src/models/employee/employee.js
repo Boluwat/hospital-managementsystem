@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { validateUser } = require("../user/validate");
 const { validateHospital } = require("../hospital/validate");
+// const { validateDepartment } = require("../department/validate");
 const { validateRole } = require("../role/validate");
 
 const employeeSchema = new mongoose.Schema(
@@ -18,6 +19,13 @@ const employeeSchema = new mongoose.Schema(
       index: true,
       required: true,
       validate: validateHospital,
+    },
+    department: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Department",
+      index: true,
+      required: true,
+      // validate: validateDepartment,
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
@@ -48,13 +56,11 @@ const employeeSchema = new mongoose.Schema(
     mobile: {
       type: String,
       required: true,
-      index: {
-        unique: true,
-      },
     },
     status: {
-      type: Boolean,
-      default: true,
+      type: String,
+      default: "ACTIVE",
+      enum: ["ACTIVE", "SUSPENDED", "TERMINATED"],
     },
   },
   { strict: "throw", timestamps: true }

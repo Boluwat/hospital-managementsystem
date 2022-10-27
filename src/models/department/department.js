@@ -6,11 +6,11 @@ const departmentSchema = new mongoose.Schema({
   },
   status: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 });
 
-const Department = mongoose.model("Department", departmentSchema)
+const Department = mongoose.model("Department", departmentSchema);
 module.exports = {
-    Department
-}
+  Department,
+};

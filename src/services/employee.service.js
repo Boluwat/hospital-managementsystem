@@ -6,17 +6,18 @@ const constants = require("../utils/constant");
 module.exports = {
   employeeService() {
     return {
-      async create(payload) {
+      async create(payload, hospital, user) {
         try {
           const employee = await Employee.findOne({
             email: payload.email,
-            mobile: payload.mobile
           });
           if (employee) {
             return {
               error: constants.EXIST,
             };
           }
+          payload.hospital = hospital;
+          payload.user = user;
           await Employee.create(payload);
           return { msg: constants.SUCCESS };
         } catch (ex) {
@@ -27,38 +28,23 @@ module.exports = {
           return { error: constants.GONE_BAD };
         }
       },
-      async getAll({
-        offset = 0,
-        limit = 100,
-        status,
-        hospital,
-        user,
-        employementType,
-      } = {}) {
-        if (!isValidObjectId(hospital)) return { error: constants.NOT_FOUND };
-        if (!isValidObjectId(user)) return { error: constants.NOT_FOUND };
+      async getAll({ offset = 0, limit = 100, status, employementType } = {}) {
         const query = {};
-        if (hospital) {
-          query.hospital = hospital;
-        }
-        if (user) {
-          query.user = user;
-        }
-        if (status || status === false) {
+        if (status) {
           query.status = status;
         }
         if (employementType) {
           query.employementType = employementType;
         }
         const totalCounts = await Employee.countDocuments(query);
-        const response = await Employee.find(query)
+        const value = await Employee.find(query)
           .populate("hospital user", "hosptalName firstname, lastname")
           .skip(offset)
           .sort({ createdAt: -1 })
           .limit(limit);
         return {
           totalCounts,
-          response,
+          value,
         };
       },
       async getById(id, hospital) {
@@ -70,45 +56,41 @@ module.exports = {
         if (!employee) return { error: constants.NOT_FOUND };
         return employee;
       },
-      async update(payload, id, hospital) {
+      async update(id, payload) {
         try {
           if (!isValidObjectId(id)) return { error: constants.NOT_FOUND };
           const employee = await Employee.findOneAndUpdate(
             {
               _id: id,
-              hospital,
             },
             payload,
             {
               new: true,
             }
-          ).populate("hospital user", "hospitalName firstname lastname");
-          if (employee) {
-            return { employee };
-          }
-          return { error: constants.NOT_FOUND };
+          ).populate("hospital", "hospitalName");
+          if (!employee) return { error: constants.NOT_FOUND };
+          return employee;
         } catch (error) {
           logger.log({
             level: "error",
             message: error,
           });
-          return { error: constants.GONE_BAD };
         }
+        return { error: constants.GONE_BAD };
       },
-      async deactivate(employeeId) {
+      async deactivate(id, hospital) {
         try {
-          if (!isValidObjectId(employeeId))
-            return { error: constants.NOT_FOUND };
-          const employee = await Employee.findById(employeeId);
-          if (!employee) return { error: constants.NOT_FOUND };
-          await Employee.findByIdAndUpdate(
+          if (!isValidObjectId(id)) return { error: constants.NOT_FOUND };
+          const employee = await Employee.findOneAndUpdate(
             {
-              _id: employeeId,
+              _id:id,
+              hospital
             },
-            { status: false },
-            { new: true }
-          );
-          return { msg: constants.SUCCESS };
+            {status: "TERMINATED"},
+            {new: true}
+          )
+         if(!employee) return {error: constants.NOT_FOUND}
+         return { msg: constants.SUCCESS };
         } catch (error) {
           logger.log({
             level: "error",

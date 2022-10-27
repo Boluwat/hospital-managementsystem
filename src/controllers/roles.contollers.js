@@ -1,18 +1,16 @@
 const { error } = require("../lib/error");
 const constants = require("../utils/constant");
-const { confirmAdmin } = require("../utils/tokenizer");
+const { confirmHospitalAdmin } = require("../utils/tokenizer");
 
 const create = async (request) => {
-  if (await confirmAdmin(request)) {
-    const role = request.payload;
-    const response = await request.server.app.services.roles.create(role);
-    if (response.error) {
-      return error(400, response.error);
-    }
-    return response;
+  const role = request.payload;
+  const response = await request.server.app.services.roles.create(role);
+  if (response.error) {
+    return error(400, response.error);
   }
-  return error(403, "Unauthorized");
-};
+  return response;
+}
+ 
 
 const getAll = async (request) => {
   const { offSet, limit, status } = request.query;
