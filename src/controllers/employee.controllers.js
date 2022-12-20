@@ -24,9 +24,10 @@ const getAll = async (request) => {
     return error(403, "Unauthorized");
   }
   const { query } = request;
-  // const { hospital } = await verify(request.auth.credentials.token);
+  const { hospital } = await verify(request.auth.credentials.token);
   const employee = await request.server.app.services.employees.getAll(
-    query /*hospital*/
+    query, 
+    hospital
   );
   const response = {
     count: employee.value ? employee.value.length : 0,
@@ -66,7 +67,7 @@ const update = async (request) => {
   }
   const response = await request.server.app.services.employees.update(
     id,
-    payload,
+    payload
     // hospital
   );
   if (response.error) {
@@ -91,10 +92,27 @@ const deactivate = async (request) => {
   return response;
 };
 
+const suspendEmployee = async (request) => {
+  if (!(await confirmHospitalAdmin(request))) {
+    return error(403, "Unauthorized");
+  }
+  const { id } = request.params;
+  const { hospital } = await verify(request.auth.credentials.token);
+  const response = await request.server.app.services.employees.suspended(
+    id,
+    hospital
+  );
+  if (response.error) {
+    return error(400, response.error);
+  }
+  return response;
+};
+
 module.exports = {
   create,
   getAll,
   update,
   getEmployee,
   deactivate,
+  suspendEmployee
 };

@@ -29,7 +29,7 @@ module.exports = (server, prefix) => {
     },
     {
       method: "Post",
-      path: "/signUp",
+      path: "/signUp/{hospitalId}",
       config: {
         description: "sign up",
         tags: ["api", "patient"],
@@ -172,6 +172,8 @@ module.exports = (server, prefix) => {
             dob: Joi.string().optional().example("Jeti"),
             mobile: Joi.string().optional().example("Jeti"),
             state: Joi.string().optional().example("Texas"),
+            occupation: Joi.string().optional(),
+            bloodGroup: Joi.string().optional(),
           }),
           failAction: async (request, h, err) => {
             throw err;

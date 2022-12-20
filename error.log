@@ -296,3 +296,122 @@
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
 {"level":"error","message":{"expiredAt":"2022-10-27T16:33:31.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::ReferenceError: type is not defined"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected identifier"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in const declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{"path":"occupation._types"}}
+{"level":"error","message":{"path":"bloodGroup._types"}}
+{"level":"error","message":{"_message":"Appointment validation failed","errors":{"departments.0":{"kind":"user defined","message":"Schema hasn't been registered for model \"Department\".\nUse mongoose.model(name, schema)","name":"ValidatorError","path":"departments.0","properties":{"message":"Schema hasn't been registered for model \"Department\".\nUse mongoose.model(name, schema)","path":"departments.0","reason":{},"type":"user defined","value":"63534a25f31b9278aeb60fe5"},"reason":{},"value":"63534a25f31b9278aeb60fe5"},"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Appointment validation failed: hospital: Path `hospital` is required., departments.0: Schema hasn't been registered for model \"Department\".\nUse mongoose.model(name, schema)","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Appointment validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Appointment validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ';'"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":{"_message":"Appointment validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Appointment validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Appointment validation failed","errors":{"hospital":{"kind":"required","message":"Path `hospital` is required.","name":"ValidatorError","path":"hospital","properties":{"message":"Path `hospital` is required.","path":"hospital","type":"required"}}},"message":"Appointment validation failed: hospital: Path `hospital` is required.","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'if'"}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{"expiredAt":"2022-11-03T15:22:25.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{}}
+{"level":"error","message":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"{ date: '2022-06-11' }\" (type Object) at path \"patient\" for model \"Appointment\"","name":"CastError","path":"patient","reason":{},"stringValue":"\"{ date: '2022-06-11' }\"","value":{"date":"2022-06-11"},"valueType":"Object"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{}}
+{"level":"error","message":{"expiredAt":"2022-11-04T17:10:01.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ')'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ')'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in const declaration"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::TypeError: Invalid schema configuration: `date` schematype definition is invalid. See https://mongoosejs.com/docs/guide.html#definition for more info on supported schema syntaxes."}
+{"level":"error","message":"failed to start server:::::TypeError: Invalid schema configuration: `Thu Dec 01 2022 07:28:19 GMT+0100 (West Africa Standard Time)` is not a valid type at path `date`. See https://bit.ly/mongoose-schematypes for a list of valid schema types."}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::TypeError: Invalid schema configuration: `Thu Dec 01 2022 08:27:43 GMT+0100 (West Africa Standard Time)` is not a valid type at path `date`. See https://bit.ly/mongoose-schematypes for a list of valid schema types."}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in const declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '}'"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ','"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ','"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing initializer in destructuring declaration"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":{}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token 'const'"}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":"failed to start server:::::ReferenceError: string is not defined"}
+{"level":"error","message":"failed to start server:::::ReferenceError: Str is not defined"}
+{"level":"error","message":{"expiredAt":"2022-12-02T05:57:22.000Z","message":"jwt expired","name":"TokenExpiredError"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: missing ) after argument list"}
+{"level":"error","message":{"isImmutableError":false,"path":"23"}}
+{"level":"error","message":{}}
+{"level":"error","message":{"path":"hospital"}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{"actual":false,"code":"ERR_ASSERTION","expected":true,"generatedMessage":false,"operator":"=="}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}

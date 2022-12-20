@@ -28,13 +28,22 @@ module.exports = {
           return { error: constants.GONE_BAD };
         }
       },
-      async getAll({ offset = 0, limit = 100, status, employementType } = {}) {
+      async getAll({
+        offset = 0,
+        limit = 100,
+        status,
+        employementType,
+        hospital,
+      } = {}) {
         const query = {};
         if (status) {
           query.status = status;
         }
         if (employementType) {
           query.employementType = employementType;
+        }
+        if (hospital) {
+          query.hospital = hospital;
         }
         const totalCounts = await Employee.countDocuments(query);
         const value = await Employee.find(query)
@@ -83,14 +92,32 @@ module.exports = {
           if (!isValidObjectId(id)) return { error: constants.NOT_FOUND };
           const employee = await Employee.findOneAndUpdate(
             {
-              _id:id,
-              hospital
+              _id: id,
+              hospital,
             },
-            {status: "TERMINATED"},
-            {new: true}
-          )
-         if(!employee) return {error: constants.NOT_FOUND}
-         return { msg: constants.SUCCESS };
+            { status: "TERMINATED" },
+            { new: true }
+          );
+          if (!employee) return { error: constants.NOT_FOUND };
+          return { msg: constants.SUCCESS };
+        } catch (error) {
+          logger.log({
+            level: "error",
+            message: error,
+          });
+          return { error: constants.GONE_BAD };
+        }
+      },
+      async suspended(id, hospital) {
+        try {
+          if (!isValidObjectId(id)) return { error: constants.NOT_FOUND };
+          const employee = await Employee.findOneAndUpdate(
+            { _id: id, hospital },
+            { status: "SUSPENDED" },
+            { new: true }
+          );
+          if (!employee) return { error: constants.NOT_FOUND };
+          return { message: constants.SUCCESS };
         } catch (error) {
           logger.log({
             level: "error",

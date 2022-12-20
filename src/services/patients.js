@@ -34,15 +34,18 @@ async function getResponse(patient) {
 module.exports = {
   patientService() {
     return {
-      async signUpPatient(patient, hospital) {
+      async signUpPatient(patient, hospitalId) {
         try {
           const validated = await checkIfPatientExist(patient);
           if (!validated) {
             const token =
               Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
             patient.token = token;
+            patient.hospital = hospitalId;
             patient.password = await hashManager().hash(patient.password);
-            patient.hospital = hospital;
+            const cardNo =
+              Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
+            patient.cardNo = cardNo;
             const newPatient = await Patients.create(patient);
             return {
               msg: constants.SUCCESS,

@@ -3,7 +3,8 @@ const hospitalControllers = require('./hospital.controllers');
 const userControllers = require('./user.controller');
 const adminControllers = require('./admin.controllers');
 const patientControllers = require('./patient.controller');
-const employeeControllers = require('./employee.controllers')
+const employeeControllers = require('./employee.controllers');
+const appointmentControllers = require('./appointment.controller');
 
 
 module.exports = {
@@ -12,5 +13,6 @@ module.exports = {
     userControllers,
     adminControllers,
     patientControllers,
-    employeeControllers
+    employeeControllers,
+    appointmentControllers
 }

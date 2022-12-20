@@ -41,10 +41,20 @@ const patientSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "INACTIVE",
-      enum: ["ACTIVE", "INACTIVE"]
+      enum: ["ACTIVE", "INACTIVE"],
     },
     token: {
       type: String,
+    },
+    bloodGroup: {
+      type: String,
+    },
+    occupation: {
+      type: String,
+    },
+    cardNo: {
+      type: String,
+      unique: true
     },
     hospital: {
       type: mongoose.Schema.Types.ObjectId,

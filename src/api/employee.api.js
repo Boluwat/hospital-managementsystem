@@ -120,13 +120,35 @@ module.exports = (server, prefix) => {
               .required()
               .min(24)
               .max(24)
-              .description("patient id"),
+              .description("employee id"),
           }),
           failAction: async (request, h, err) => {
             throw err;
           },
         },
         handler: employeeControllers.deactivate,
+      },
+    },
+    {
+      method: "Delete",
+      path: "/suspend/{id}",
+      config: {
+        description: "suspend an employee",
+        tags: ["api", "employee"],
+        auth: "simple",
+        validate: {
+          params: Joi.object({
+            id: Joi.string()
+              .required()
+              .min(24)
+              .max(24)
+              .description("employee id"),
+          }),
+          failAction: async (request, h, err) => {
+            throw err;
+          },
+        },
+        handler: employeeControllers.suspendEmployee,
       },
     },
   ]);

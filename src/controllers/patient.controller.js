@@ -1,7 +1,7 @@
 const { error } = require("../lib/error");
 const constants = require("../utils/constant");
 const { confirmHospitalAdmin, verify } = require("../utils/tokenizer");
-const config = require("config");
+
 
 const signUpPatient = async (request) => {
   const patient = request.payload;
@@ -53,7 +53,10 @@ const getAll = async (request) => {
   if (await confirmHospitalAdmin(request)) {
     const { query } = request;
     const { hospital } = await verify(request.auth.credentials.token);
-    const patients = await request.server.app.services.patients.getAll(query, hospital);
+    const patients = await request.server.app.services.patients.getAll(
+      query,
+      hospital
+    );
     const response = {
       count: patients.value ? patients.value.length : 0,
       patients: patients.value,
@@ -65,11 +68,9 @@ const getAll = async (request) => {
 
 const getPatientByHospital = async (request) => {
   const { id } = request.params;
-  const { hospital } = await verify(request.auth.credentials.token);
   if (await confirmHospitalAdmin(request)) {
     const response = await request.server.app.services.patients.getPatientByID(
-      id,
-      hospital
+      id
     );
     if (response.error) {
       return error(400, response.error);
@@ -141,5 +142,5 @@ module.exports = {
   updatePatient,
   getPatientByHospital,
   activatePatient,
-  getPatient
+  getPatient,
 };
