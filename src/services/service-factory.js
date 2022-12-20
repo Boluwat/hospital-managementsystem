@@ -1,16 +1,23 @@
 const {
-    roleService,
-    hospitalService,
-    userService
-} = require('.');
-
+  roleService,
+  hospitalService,
+  userService,
+  adminService,
+  employeeService,
+  patientService,
+  appointmentService
+} = require(".");
 
 const createServices = () => ({
-    roles: roleService(),
-    hospitals: hospitalService(),
-    users: userService(),
+  roles: roleService(),
+  hospitals: hospitalService(),
+  users: userService(),
+  admin: adminService(),
+  employees: employeeService(),
+  patients: patientService(),
+  appointments: appointmentService()
 });
 
 module.exports = {
-    createServices
+  createServices,
 };

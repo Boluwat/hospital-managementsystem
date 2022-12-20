@@ -36,8 +36,7 @@ const createHospital = async (request) => {
 };
 
 const getAll = async (request) => {
-  if (await confirmAdmin(request)) {
-    const { query } = request;
+  const { query } = request;
     const hospital = await request.server.app.services.hospitals.getAll(query);
     const response = {
       count: hospital.value ? hospital.value.length : 0,
@@ -45,23 +44,17 @@ const getAll = async (request) => {
       hospitals: hospital.value,
     };
     return response;
-  }
-  return error(403, "Unauthorized");
 };
 
 const getHospital = async (request) => {
   const { id } = request.params;
-  const { hospital } = await verify(request.auth.credentials.token);
-  if ((await confirmAdmin(request)) || hospital) {
-    const value = await request.server.app.services.hospitals.getHospitalById(
-      id
-    );
-    if (value.error) {
-      return error(400, value.error);
-    }
-    return value;
+  const value = await request.server.app.services.hospitals.getHospitalById(
+    id
+  );
+  if (value.error) {
+    return error(400, value.error);
   }
-  return error(403, "Unauthorized");
+  return value;
 };
 
 // const getHopitalBy Admin

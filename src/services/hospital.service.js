@@ -1,4 +1,3 @@
-const config = require("config");
 const { isValidObjectId } = require("mongoose");
 const { Hospital } = require("../models/hospital");
 const { User } = require("../models/user");
@@ -7,7 +6,7 @@ const constants = require("../utils/constant");
 
 async function checkIfHospitalExist(hospital) {
   const hospitalExist = await Hospital.findOne({
-    $or: [{ email: hospital.email }, { mobile: hospital.mobile }],
+    $or: [{ email: hospital.email }, { mobile: hospital.mobile }, {hospitalName: hospital.hospitalName}],
   });
   return hospitalExist;
 }
@@ -21,7 +20,7 @@ module.exports = {
           if (!validate) {
             const newHospital = await Hospital.create(hospital);
             const { _id: hospitalId, users } = newHospital;
-            await User.findByIdAndUpdate(users[0], { hospital: hospitalId });
+            await User.findByIdAndUpdate(users, { hospital: hospitalId });
             return {
               msg: constants.SUCCESS,
               hospitalId,
@@ -91,39 +90,39 @@ module.exports = {
         }
         return { error: constants.NOT_FOUND };
       },
-      async deactivateAccount(hospitalId, password) {
-        try {
-          if (!isValidObjectId(hospitalId)) return constants.NOT_FOUND;
-          const hospital = await Hospital.findById(hospitalId);
-          if (!hospital) return { error: constants.NOT_FOUND };
-          const validatePassword = await hashManager().compare(
-            password,
-            user.password
-          );
-          if (validatePassword) {
-            const updatedhopital = await Hospital.findOneAndUpdate(
-              {
-                _id: hospitalId,
-              },
-              {
-                status: "INACTIVE",
-              },
-              {
-                new: true,
-              }
-            );
-            if (updatedhopital) {
-              return { response: constants.SUCCESS };
-            }
-          }
-          return { error: constants.INVALID_USER };
-        } catch (ex) {
-          logger.log({
-            level: "error",
-            message: ex,
-          });
-        }
-      },
+      // async deactivateAccount(hospitalId, password, user) {
+      //   try {
+      //     if (!isValidObjectId(hospitalId)) return constants.NOT_FOUND;
+      //     const hospital = await Hospital.findById(hospitalId);
+      //     if (!hospital) return { error: constants.NOT_FOUND };
+      //     const validatePassword = await hashManager().compare(
+      //       password,
+      //       user.password
+      //     );
+      //     if (validatePassword) {
+      //       const updatedhopital = await Hospital.findOneAndUpdate(
+      //         {
+      //           _id: hospitalId,
+      //         },
+      //         {
+      //           status: "INACTIVE",
+      //         },
+      //         {
+      //           new: true,
+      //         }
+      //       );
+      //       if (updatedhopital) {
+      //         return { response: constants.SUCCESS };
+      //       }
+      //     }
+      //     return { error: constants.INVALID_USER };
+      //   } catch (ex) {
+      //     logger.log({
+      //       level: "error",
+      //       message: ex,
+      //     });
+      //   }
+      // },
     };
   },
 };

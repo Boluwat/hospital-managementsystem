@@ -6,7 +6,7 @@ module.exports = {
     superAdminPassword: process.env.SUPERADMINPASSWORD || 1234,
     migrationIDS: {
         HOSPITAL_ADMIN_ID: process.env.HOSPITAL_ADMIN_ID || "62d6a89e1caa4942b1db3fb8",
-        HOSPITAL_USER_ID: process.env.USER_ID || "62d6a89e1caa4942b1db3fb4",
+        HOSPITAL_USER_ID: process.env.USER_ID || "62d6aac843e25b8365069f45",
         ADMIN_ROLE_IDS: [
             process.env.SUPER_ADMIN_ID || '62d6a4151caa4942b1db3fb2',
             process.env.ADMIN_ROLE_ID || '62d6a4151caa4942b1db3fc3',

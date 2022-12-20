@@ -1410,3 +1410,13 @@
 {"level":"info","message":"%s %s server is runnung 3090..."}
 {"level":"error","message":{}}
 {"level":"info","message":"%s %s server is runnung 3090..."}
+{"level":"error","message":{}}
+{"level":"info","message":"%s %s server is runnung 3090..."}
+{"level":"error","message":{}}
+{"level":"error","message":{"address":"127.0.0.1","code":"EADDRINUSE","errno":-4091,"port":3090,"syscall":"listen"}}
+{"level":"info","message":"%s %s server is runnung 3090..."}
+{"level":"error","message":{"address":"127.0.0.1","code":"EADDRINUSE","errno":-4091,"port":3090,"syscall":"listen"}}
+{"level":"info","message":"connected to databse"}
+{"level":"info","message":"connected to databse"}
+{"level":"info","message":"%s %s server is runnung 3090..."}
+{"level":"info","message":"connected to databse"}
