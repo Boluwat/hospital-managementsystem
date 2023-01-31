@@ -6,6 +6,7 @@ const constants = require("../utils/constant");
 const { hashManager } = require("../utils/bcrypt");
 const { sign } = require("../utils/tokenizer");
 const hospital = require("../models/hospital");
+const { EMPTY_PAYLOAD } = require("../utils/constant");
 
 async function checkIfPatientExist(patient) {
   const patientExist = await Patients.findOne({
@@ -43,9 +44,10 @@ module.exports = {
             patient.token = token;
             patient.hospital = hospitalId;
             patient.password = await hashManager().hash(patient.password);
-            const cardNo =
-              Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
-            patient.cardNo = cardNo;
+            const patientCount =
+              (await Patients.countDocuments({ hospital: patient.hospital })) +
+              1;
+            patient.cardNo = patientCount.toString().padStart(4, "0");
             const newPatient = await Patients.create(patient);
             return {
               msg: constants.SUCCESS,
