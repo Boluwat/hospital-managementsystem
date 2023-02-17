@@ -2,6 +2,7 @@ const { isValidObjectId } = require("mongoose");
 const { Employee } = require("../models/employee");
 const logger = require("../lib/logger");
 const constants = require("../utils/constant");
+const { hashManager } = require("../utils/bcrypt");
 
 module.exports = {
   employeeService() {
@@ -18,8 +19,32 @@ module.exports = {
           }
           payload.hospital = hospital;
           payload.user = user;
-          await Employee.create(payload);
-          return { msg: constants.SUCCESS };
+          payload.password = await hashManager().hash(payload.email);
+          const newEmployee = await Employee.create(payload);
+          return { msg: constants.SUCCESS, employeeId: newEmployee._id };
+        } catch (ex) {
+          logger.log({
+            level: "error",
+            message: ex,
+          });
+          return { error: constants.GONE_BAD };
+        }
+      },
+      async employeeLogin(payload) {
+        try {
+          const employee = await Employee.findOne({
+            email: payload.email,
+          });
+
+          if (!employee) return { error: constants.NOT_FOUND };
+          const validatePassword = await hashManager().compare(
+            payload.password,
+            employee.password
+          );
+          if (validatePassword) {
+            return {employeeId: employee._id };
+          }
+          return constants.INVALID_USER;
         } catch (ex) {
           logger.log({
             level: "error",
@@ -47,7 +72,7 @@ module.exports = {
         }
         const totalCounts = await Employee.countDocuments(query);
         const value = await Employee.find(query)
-          .populate("hospital user", "hosptalName firstname, lastname")
+          .populate("hospital user role", "hosptalName firstname, lastname name")
           .skip(offset)
           .sort({ createdAt: -1 })
           .limit(limit);
@@ -61,7 +86,7 @@ module.exports = {
         const employee = await Employee.findOne({
           _id: id,
           hospital,
-        }).populate("hospital user", "hospitalName firstname lastname");
+        }).populate("hospital user role", "hospitalName firstname lastname name");
         if (!employee) return { error: constants.NOT_FOUND };
         return employee;
       },

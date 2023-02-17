@@ -19,6 +19,16 @@ const create = async (request) => {
   return response;
 };
 
+const empolyeeLogin = async (request) => {
+  const response = await request.server.app.services.employees.employeeLogin(
+    request.payload
+  );
+  if (response.error) {
+    return error(404, response.error);
+  }
+  return response;
+};
+
 const getAll = async (request) => {
   if (!(await confirmHospitalAdmin(request))) {
     return error(403, "Unauthorized");
@@ -114,5 +124,6 @@ module.exports = {
   update,
   getEmployee,
   deactivate,
-  suspendEmployee
+  empolyeeLogin,
+  suspendEmployee,
 };

@@ -415,3 +415,8 @@
 {"level":"error","message":{}}
 {"level":"error","message":{}}
 {"level":"error","message":{}}
+{"level":"error","message":{"_message":"Employee validation failed","errors":{"user":{"kind":"required","message":"Path `user` is required.","name":"ValidatorError","path":"user","properties":{"message":"Path `user` is required.","path":"user","type":"required"}}},"message":"Employee validation failed: user: Path `user` is required.","name":"ValidationError"}}
+{"level":"error","message":{"_message":"Employee validation failed","errors":{"user":{"kind":"required","message":"Path `user` is required.","name":"ValidatorError","path":"user","properties":{"message":"Path `user` is required.","path":"user","type":"required"}}},"message":"Employee validation failed: user: Path `user` is required.","name":"ValidationError"}}
+{"level":"error","message":{"code":11000,"index":0,"keyPattern":{"mobile":1},"keyValue":{"mobile":"09080516192"}}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected reserved word"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ';'"}

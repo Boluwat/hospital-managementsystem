@@ -35,6 +35,29 @@ module.exports = (server, prefix) => {
       },
     },
     {
+      method: "Post",
+      path: "/employee-signIn",
+      config: {
+        description: "employee login",
+        tags: ["api", "employee"],
+        validate: {
+          payload: Joi.object({
+            email: Joi.string()
+              .email()
+              .required()
+              .lowercase()
+              .trim()
+              .prefs({ convert: true }),
+            password: Joi.string().required(),
+          }),
+          failAction: async (request, h, err) => {
+            throw err;
+          },
+        },
+        handler: employeeControllers.empolyeeLogin,
+      },
+    },
+    {
       method: "Get",
       path: "/",
       config: {
