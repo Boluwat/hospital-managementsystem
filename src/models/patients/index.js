@@ -1,6 +1,6 @@
-const { Patients } =require('./patients');
+const { Patients } = require('./patients');
 
 module.exports = {
-    schemaName: 'Patient',
-    Patients
-}
+  schemaName: 'Patient',
+  Patients,
+};

@@ -1,6 +1,6 @@
-const { error } = require("../lib/error");
-const constants = require("../utils/constant");
-const { confirmHospitalAdmin } = require("../utils/tokenizer");
+const { error } = require('../lib/error');
+const constants = require('../utils/constant');
+const { confirmHospitalAdmin, confirmAdmin } = require('../utils/tokenizer');
 
 const create = async (request) => {
   const role = request.payload;
@@ -9,8 +9,7 @@ const create = async (request) => {
     return error(400, response.error);
   }
   return response;
-}
- 
+};
 
 const getAll = async (request) => {
   const { offSet, limit, status } = request.query;
@@ -37,7 +36,7 @@ const getRole = async (request) => {
 };
 
 const update = async (request) => {
-  if (await confirmAdmin(request)) {
+  if (await confirmHospitalAdmin(request)) {
     const role = request.payload;
     const { id } = request.params;
     if (Object.keys(role).length === 0 && role.constructor === Object) {
@@ -49,7 +48,7 @@ const update = async (request) => {
     }
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 const deactivate = async (request) => {
@@ -61,7 +60,7 @@ const deactivate = async (request) => {
     }
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 module.exports = {

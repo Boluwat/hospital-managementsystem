@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { validateUser } = require("../user/validate");
+const mongoose = require('mongoose');
+const { validateUser } = require('../user/validate');
 
 const hospitalSchema = new mongoose.Schema(
   {
@@ -13,7 +13,7 @@ const hospitalSchema = new mongoose.Schema(
     },
     users: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
       index: true,
       validate: validateUser,
@@ -33,8 +33,8 @@ const hospitalSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "ACTIVE",
-      enum: ["ACTIVE", "INACTIVE"],
+      default: 'ACTIVE',
+      enum: ['ACTIVE', 'INACTIVE'],
     },
     hospitalAddress: {
       type: String,
@@ -52,10 +52,10 @@ const hospitalSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { strict: "throw", timestamps: true }
+  { strict: 'throw', timestamps: true },
 );
 
-const Hospital = mongoose.model("Hospital", hospitalSchema);
+const Hospital = mongoose.model('Hospital', hospitalSchema);
 module.exports = {
   Hospital,
 };

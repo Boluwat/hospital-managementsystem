@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const { validateRole } = require("../role/validate");
-const { validateHospital } = require("../hospital/validate");
+const mongoose = require('mongoose');
+const { validateRole } = require('../role/validate');
+const { validateHospital } = require('../hospital/validate');
 
 const userSchema = new mongoose.Schema(
   {
@@ -36,21 +36,21 @@ const userSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ["MALE", "FEMALE"],
+      enum: ['MALE', 'FEMALE'],
     },
     dob: {
       type: Date,
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Role",
+      ref: 'Role',
       required: true,
       index: true,
       validate: validateRole,
     },
     hospital: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Hospital",
+      ref: 'Hospital',
       index: true,
       sparse: true,
       validate: validateHospital,
@@ -67,14 +67,14 @@ const userSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "INACTIVE",
-      enum: ["ACTIVE", "INACTIVE", "TERMINATED"],
+      default: 'INACTIVE',
+      enum: ['ACTIVE', 'INACTIVE', 'TERMINATED'],
     },
   },
-  { strict: "throw", timestamps: true }
+  { strict: 'throw', timestamps: true },
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = {
   User,
 };

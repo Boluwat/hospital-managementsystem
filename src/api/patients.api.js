@@ -1,16 +1,17 @@
-const Joi = require("joi");
-const namespace = require("hapijs-namespace");
+/* eslint-disable import/no-extraneous-dependencies */
+const Joi = require('joi');
+const namespace = require('hapijs-namespace');
 
-const { patientControllers } = require("../controllers");
+const { patientControllers } = require('../controllers');
 
 module.exports = (server, prefix) => {
   namespace(server, prefix, [
     {
-      method: "Post",
-      path: "/login",
+      method: 'Post',
+      path: '/login',
       config: {
-        description: "sign in",
-        tags: ["api", "patient"],
+        description: 'sign in',
+        tags: ['api', 'patient'],
         validate: {
           payload: Joi.object({
             email: Joi.string()
@@ -28,12 +29,12 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Post",
-      path: "/signUp/{hospitalId}",
+      method: 'Post',
+      path: '/signUp/{hospitalId}',
       config: {
-        description: "sign up",
-        tags: ["api", "patient"],
-        auth: "simple",
+        description: 'sign up',
+        tags: ['api', 'patient'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
             email: Joi.string()
@@ -42,12 +43,12 @@ module.exports = (server, prefix) => {
               .trim()
               .prefs({ convert: true }),
             password: Joi.string().required(),
-            fullname: Joi.string().required().example("boluwatife string"),
-            address: Joi.string().required().example("boluwatife string"),
-            gender: Joi.string().required().valid("Male", "Female"),
-            mobile: Joi.string().required().example("+234...."),
-            dob: Joi.string().optional().example("12/12/12"),
-            state: Joi.string().required().example("Texas"),
+            fullname: Joi.string().required().example('boluwatife string'),
+            address: Joi.string().required().example('boluwatife string'),
+            gender: Joi.string().required().valid('Male', 'Female'),
+            mobile: Joi.string().required().example('+234....'),
+            dob: Joi.string().optional().example('12/12/12'),
+            state: Joi.string().required().example('Texas'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -57,17 +58,17 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Post",
-      path: "/reset-password",
+      method: 'Post',
+      path: '/reset-password',
       config: {
-        description: "reset patient password",
-        tags: ["api", "patient"],
-        auth: "simple",
+        description: 'reset patient password',
+        tags: ['api', 'patient'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
             newPassword: Joi.string()
               .required()
-              .description("new patient password"),
+              .description('new patient password'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -77,14 +78,14 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/activate/{patientId}/{token}",
+      method: 'Get',
+      path: '/activate/{patientId}/{token}',
       config: {
-        description: "activate account",
-        tags: ["api", "patient"],
+        description: 'activate account',
+        tags: ['api', 'patient'],
         validate: {
           params: Joi.object({
-            token: Joi.number().description("token"),
+            token: Joi.number().description('token'),
             patientId: Joi.string().max(24).min(24),
           }),
           failAction: async (request, h, err) => {
@@ -95,19 +96,19 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/hospital/{id}",
+      method: 'Get',
+      path: '/hospital/{id}',
       config: {
-        description: "get patient by id",
-        tags: ["api", "Patient"],
-        auth: "simple",
+        description: 'get patient by id',
+        tags: ['api', 'Patient'],
+        auth: 'simple',
         validate: {
           params: Joi.object({
             id: Joi.string()
               .required()
               .min(24)
               .max(24)
-              .description("patient id"),
+              .description('patient id'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -117,18 +118,18 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/{id}",
+      method: 'Get',
+      path: '/{id}',
       config: {
-        description: "get patient by id",
-        tags: ["api", "Patient"],
+        description: 'get patient by id',
+        tags: ['api', 'Patient'],
         validate: {
           params: Joi.object({
             id: Joi.string()
               .required()
               .min(24)
               .max(24)
-              .description("patient id"),
+              .description('patient id'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -138,17 +139,17 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/",
+      method: 'Get',
+      path: '/',
       config: {
-        description: "get all users",
-        tags: ["api", "user"],
-        auth: "simple",
+        description: 'get all users',
+        tags: ['api', 'user'],
+        auth: 'simple',
         validate: {
           query: Joi.object({
             limit: Joi.number(),
             offset: Joi.number(),
-            status: Joi.string().optional().valid("ACTIVE", "INACTIVE"),
+            status: Joi.string().optional().valid('ACTIVE', 'INACTIVE'),
             activated: Joi.boolean().optional(),
           }),
           failAction: async (request, h, err) => {
@@ -159,19 +160,19 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Patch",
-      path: "/hospital/patient",
+      method: 'Patch',
+      path: '/hospital/patient',
       config: {
-        description: "update a hospital patient",
-        tags: ["api", "patient"],
-        auth: "simple",
+        description: 'update a hospital patient',
+        tags: ['api', 'patient'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
-            fullname: Joi.string().optional().example("boluwatife string"),
-            address: Joi.string().optional().example("boluwatife string"),
-            dob: Joi.string().optional().example("Jeti"),
-            mobile: Joi.string().optional().example("Jeti"),
-            state: Joi.string().optional().example("Texas"),
+            fullname: Joi.string().optional().example('boluwatife string'),
+            address: Joi.string().optional().example('boluwatife string'),
+            dob: Joi.string().optional().example('Jeti'),
+            mobile: Joi.string().optional().example('Jeti'),
+            state: Joi.string().optional().example('Texas'),
             occupation: Joi.string().optional(),
             bloodGroup: Joi.string().optional(),
           }),
@@ -183,19 +184,19 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Delete",
-      path: "/{id}",
+      method: 'Delete',
+      path: '/{id}',
       config: {
-        description: "delete a patient",
-        tags: ["api", "patient"],
-        auth: "simple",
+        description: 'delete a patient',
+        tags: ['api', 'patient'],
+        auth: 'simple',
         validate: {
           params: Joi.object({
             id: Joi.string()
               .required()
               .min(24)
               .max(24)
-              .description("patient id"),
+              .description('patient id'),
           }),
           failAction: async (request, h, err) => {
             throw err;

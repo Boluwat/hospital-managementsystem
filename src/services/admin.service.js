@@ -1,10 +1,12 @@
-const { isValidObjectId } = require("mongoose");
-const { Admin } = require("../models/admin");
-const logger = require("../lib/logger");
-const constants = require("../utils/constant");
-const { hashManager } = require("../utils/bcrypt");
-const { sign } = require("../utils/tokenizer");
-const config = require("config");
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
+const { isValidObjectId } = require('mongoose');
+const config = require('config');
+const { Admin } = require('../models/admin');
+const logger = require('../lib/logger');
+const constants = require('../utils/constant');
+const { hashManager } = require('../utils/bcrypt');
+const { sign } = require('../utils/tokenizer');
 
 async function getResponse(admin) {
   admin = admin.toObject();
@@ -40,7 +42,7 @@ module.exports = {
         const admins = await Admin.findOne({
           _id: admin,
           role: config.migrationIDS.ADMIN_ROLE_IDS[1],
-          status: "ACTIVE",
+          status: 'ACTIVE',
         });
         return admins;
       },
@@ -50,7 +52,7 @@ module.exports = {
         const admins = await Admin.findOne({
           _id: admin,
           role: config.migrationIDS.ADMIN_ROLE_IDS[0],
-          status: "ACTIVE",
+          status: 'ACTIVE',
         });
         return admins;
       },
@@ -58,8 +60,7 @@ module.exports = {
         try {
           const validate = await checkIfAdminExist(admin);
           if (!validate) {
-            const token =
-              Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
+            const token = Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
             admin.token = token;
             if (!admin.password) admin.password = admin.email;
             admin.password = await hashManager().hash(admin.password);
@@ -72,7 +73,7 @@ module.exports = {
           return { error: constants.DUPLICATE_USER };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -89,11 +90,11 @@ module.exports = {
             },
             {
               activated: true,
-              status: "ACTIVE",
+              status: 'ACTIVE',
             },
             {
               new: true,
-            }
+            },
           );
 
           if (updatedAdmin) {
@@ -102,7 +103,7 @@ module.exports = {
           return { error: constants.INVALID_TOKEN };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };

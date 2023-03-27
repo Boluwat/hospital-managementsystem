@@ -1,12 +1,14 @@
-const { isValidObjectId } = require("mongoose");
-const { Hospital } = require("../models/hospital");
-const { Patients } = require("../models/patients");
-const logger = require("../lib/logger");
-const constants = require("../utils/constant");
-const { hashManager } = require("../utils/bcrypt");
-const { sign } = require("../utils/tokenizer");
-const hospital = require("../models/hospital");
-const { EMPTY_PAYLOAD } = require("../utils/constant");
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
+const { isValidObjectId } = require('mongoose');
+// const { Hospital } = require('../models/hospital');
+const { Patients } = require('../models/patients');
+const logger = require('../lib/logger');
+const constants = require('../utils/constant');
+const { hashManager } = require('../utils/bcrypt');
+const { sign } = require('../utils/tokenizer');
+// const hospital = require('../models/hospital');
+// const { EMPTY_PAYLOAD } = require('../utils/constant');
 
 async function checkIfPatientExist(patient) {
   const patientExist = await Patients.findOne({
@@ -39,15 +41,13 @@ module.exports = {
         try {
           const validated = await checkIfPatientExist(patient);
           if (!validated) {
-            const token =
-              Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
+            const token = Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
             patient.token = token;
             patient.hospital = hospitalId;
             patient.password = await hashManager().hash(patient.password);
-            const patientCount =
-              (await Patients.countDocuments({ hospital: patient.hospital })) +
-              1;
-            patient.cardNo = patientCount.toString().padStart(4, "0");
+            const patientCount = (await Patients.countDocuments({ hospital: patient.hospital }))
+              + 1;
+            patient.cardNo = patientCount.toString().padStart(4, '0');
             const newPatient = await Patients.create(patient);
             return {
               msg: constants.SUCCESS,
@@ -57,7 +57,7 @@ module.exports = {
           return { message: constants.DUPLICATE_USER };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -74,18 +74,17 @@ module.exports = {
           const { _id } = dbUser;
           const validatePassword = await hashManager().compare(
             patient.password,
-            dbUser.password
+            dbUser.password,
           );
           if (dbUser && validatePassword) {
             if (!dbUser.activated) {
-              const token =
-                Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
+              const token = Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
               await Patients.findOneAndUpdate(
                 {
                   $or: [{ email: patient.email }, { mobile: patient.mobile }],
                 },
                 { token },
-                { new: true }
+                { new: true },
               );
               return {
                 error: {
@@ -103,7 +102,7 @@ module.exports = {
           };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           throw new Error(error.message);
@@ -120,12 +119,12 @@ module.exports = {
             },
             {
               activated: true,
-              status: "ACTIVE",
+              status: 'ACTIVE',
             },
             {
               new: true,
-            }
-          ).populate("hospital", "_id hospitalName");
+            },
+          ).populate('hospital', '_id hospitalName');
 
           if (updatePatient) {
             return await getResponse(updatePatient);
@@ -133,13 +132,15 @@ module.exports = {
           return { error: constants.INVALID_TOKEN };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
         }
       },
-      async getAll({ offset = 0, limit = 100, status, activated } = {}) {
+      async getAll({
+        offset = 0, limit = 100, status, activated,
+      } = {}) {
         const query = {};
         if (status) {
           query.status = status;
@@ -150,12 +151,13 @@ module.exports = {
         const totalCounts = await Patients.countDocuments(query);
         const value = [];
         const response = await Patients.find(query)
-          .populate("hospital", "_id hospitalName")
+          .populate('hospital', '_id hospitalName')
           .select()
           .skip(offset)
           .sort({ createdAt: -1 })
           .limit(limit);
         for (let index = 0; index < response.length; index += 1) {
+          // eslint-disable-next-line no-await-in-loop
           value.push((await getResponse(response[index])).patient);
         }
         return {
@@ -175,7 +177,7 @@ module.exports = {
           return (await getResponse(patient)).patient;
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -188,7 +190,7 @@ module.exports = {
           const updatePatient = await Patients.findOneAndUpdate(
             { _id: id },
             { password },
-            { new: true }
+            { new: true },
           );
           if (updatePatient) {
             return { msg: constants.SUCCESS };
@@ -196,7 +198,7 @@ module.exports = {
           return { error: constants.GONE_BAD };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -208,7 +210,7 @@ module.exports = {
           const updatePatient = await Patients.findOneAndUpdate(
             { _id: patientId },
             patient,
-            { new: true }
+            { new: true },
           );
           if (updatePatient) {
             return (await getResponse(updatePatient)).patient;
@@ -216,7 +218,7 @@ module.exports = {
           return { error: constants.INVALID_USER };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -229,14 +231,14 @@ module.exports = {
           if (patient) {
             await Patients.findOneAndUpdate(
               { _id: patientId },
-              { status: "INACTIVE", activated: false }
+              { status: 'INACTIVE', activated: false },
             );
             return { msg: constants.SUCCESS };
           }
           return { message: constants.INVALID_USER };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };

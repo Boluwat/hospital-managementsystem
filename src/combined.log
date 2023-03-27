@@ -1420,3 +1420,7 @@
 {"level":"info","message":"connected to databse"}
 {"level":"info","message":"%s %s server is runnung 3090..."}
 {"level":"info","message":"connected to databse"}
+{"level":"error","message":{}}
+{"level":"info","message":"%s %s server is runnung 3090..."}
+{"level":"error","message":{}}
+{"level":"info","message":"%s %s server is runnung 3090..."}

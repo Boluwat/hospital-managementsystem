@@ -1,15 +1,16 @@
-const { error } = require("../lib/error");
-const constants = require("../utils/constant");
+/* eslint-disable no-return-await */
+const config = require('config');
+const { error } = require('../lib/error');
+const constants = require('../utils/constant');
 const {
   confirmAdmin,
   verify,
   confirmHospitalAdmin,
-} = require("../utils/tokenizer");
-const config = require("config");
+} = require('../utils/tokenizer');
 
 const signInCustomUser = async (request, reply) => {
   const response = await request.server.app.services.users.signInUser(
-    request.payload
+    request.payload,
   );
   if (response.error) {
     if (response.error.activated === false) {
@@ -22,8 +23,8 @@ const signInCustomUser = async (request, reply) => {
 };
 
 function validateSignUpData(user) {
-  if (user.mobile.charAt(0) !== "+") {
-    return error(400, "Enter your your number with your country code");
+  if (user.mobile.charAt(0) !== '+') {
+    return error(400, 'Enter your your number with your country code');
   }
   return user;
 }
@@ -31,15 +32,15 @@ function validateSignUpData(user) {
 const createUser = async (request, type) => {
   const user = request.payload;
   if (
-    (type === constants.HOSPITALS && !(await confirmHospitalAdmin(request))) ||
-    (type === constants.HOSPITALS &&
-      user.role !== config.migrationIDS.HOSPITAL_ADMIN_ID &&
-      user.role !== config.migrationIDS.HOSPITAL_USER_ID)
+    (type === constants.HOSPITALS && !(await confirmHospitalAdmin(request)))
+    || (type === constants.HOSPITALS
+      && user.role !== config.migrationIDS.HOSPITAL_ADMIN_ID
+      && user.role !== config.migrationIDS.HOSPITAL_USER_ID)
   ) {
-    return error(403, "unathorized");
+    return error(403, 'unathorized');
   }
-  if (type === "Admin" && !(await confirmAdmin(request))) {
-    return error(403, "unathorized");
+  if (type === 'Admin' && !(await confirmAdmin(request))) {
+    return error(403, 'unathorized');
   }
   const validateData = validateSignUpData(user);
   if (validateData.error) return validateData.error;
@@ -52,7 +53,7 @@ const createUser = async (request, type) => {
   }
 
   const response = await request.server.app.services.users.signUpUser(
-    validateData
+    validateData,
   );
   if (response.error) {
     return error(400, response.error);
@@ -60,17 +61,15 @@ const createUser = async (request, type) => {
   return response;
 };
 
-const createHospitalUser = async (request) =>
-  await createUser(request, constants.HOSPITALS);
-  
+const createHospitalUser = async (request) => await createUser(request, constants.HOSPITALS);
 
-const createAdminUser = async (request) => await createUser(request, "Admin");
+const createAdminUser = async (request) => await createUser(request, 'Admin');
 
 const activateUser = async (request) => {
   const { userId, token } = request.params;
   const response = await request.server.app.services.users.activateUser(
     userId,
-    token
+    token,
   );
   if (response.error) {
     return error(400, response.error);
@@ -88,7 +87,7 @@ const getAll = async (request) => {
     };
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 const getUser = async (request) => {
@@ -101,14 +100,14 @@ const getUser = async (request) => {
     }
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 const resetPassword = async (request) => {
   const { user } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.users.resetPassword(
     request.payload,
-    user
+    user,
   );
   if (response.error) {
     return error(400, response.error);
@@ -124,7 +123,7 @@ const updateUser = async (request) => {
   const { user } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.users.updateUser(
     payload,
-    user
+    user,
   );
   if (response.error) {
     return error(400, response.error);
@@ -137,7 +136,7 @@ const deactivateUser = async (request) => {
   const { user } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.users.deleteUser(
     password,
-    user
+    user,
   );
   if (response.error) {
     return error(400, response.error);

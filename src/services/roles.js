@@ -1,7 +1,8 @@
-const { isValidObjectId } = require("mongoose");
-const logger = require("../lib/logger");
-const { Role } = require("../models/role/index");
-const constants = require("../utils/constant");
+/* eslint-disable consistent-return */
+const { isValidObjectId } = require('mongoose');
+const logger = require('../lib/logger');
+const { Role } = require('../models/role/index');
+const constants = require('../utils/constant');
 
 module.exports = {
   roleService() {
@@ -18,7 +19,7 @@ module.exports = {
           return { message: constants.SUCCESS };
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
         }
@@ -54,13 +55,13 @@ module.exports = {
             payload,
             {
               new: true,
-            }
+            },
           );
           if (!role) return { error: constants.NOT_FOUND };
           return role;
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -68,7 +69,7 @@ module.exports = {
       },
       async deactivate(roleId) {
         try {
-          if (!isValidObjectId(id)) return { error: constants.NOT_FOUND };
+          if (!isValidObjectId(roleId)) return { error: constants.NOT_FOUND };
           const role = await Role.findById(roleId);
           if (!role) return { error: constants.NOT_FOUND };
           await Role.findOneAndUpdate(
@@ -76,12 +77,12 @@ module.exports = {
               _id: roleId,
             },
             { status: false },
-            { new: true }
+            { new: true },
           );
           return constants.SUCCESS;
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };

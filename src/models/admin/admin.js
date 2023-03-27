@@ -1,6 +1,5 @@
-const mongoose = require("mongoose");
-const { validateRole } = require("../role/validate");
-
+const mongoose = require('mongoose');
+const { validateRole } = require('../role/validate');
 
 const adminSchema = new mongoose.Schema(
   {
@@ -39,22 +38,22 @@ const adminSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "INACTIVE",
-      enum: ["ACTIVE", "INACTIVE", "TERMINATED"],
+      default: 'INACTIVE',
+      enum: ['ACTIVE', 'INACTIVE', 'TERMINATED'],
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Role",
+      ref: 'Role',
       required: true,
       index: true,
       validate: validateRole,
     },
   },
 
-  { strict: "throw", timestamps: true }
+  { strict: 'throw', timestamps: true },
 );
 
-const Admin = mongoose.model("Admin", adminSchema);
+const Admin = mongoose.model('Admin', adminSchema);
 module.exports = {
   Admin,
 };

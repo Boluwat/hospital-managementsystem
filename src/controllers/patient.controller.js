@@ -1,14 +1,13 @@
-const { error } = require("../lib/error");
-const constants = require("../utils/constant");
-const { confirmHospitalAdmin, verify } = require("../utils/tokenizer");
-
+const { error } = require('../lib/error');
+const constants = require('../utils/constant');
+const { confirmHospitalAdmin, verify } = require('../utils/tokenizer');
 
 const signUpPatient = async (request) => {
   const patient = request.payload;
   const { hospital } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.patients.signUpPatient(
     patient,
-    hospital
+    hospital,
   );
   if (response.error) {
     return error(401, response.error);
@@ -18,7 +17,7 @@ const signUpPatient = async (request) => {
 
 const signInPatient = async (request, reply) => {
   const response = await request.server.app.services.patients.signInPatient(
-    request.payload
+    request.payload,
   );
   if (response.error) {
     if (response.error.activated === false) {
@@ -41,7 +40,7 @@ const activatePatient = async (request) => {
   const { patientId, token } = request.params;
   const response = await request.server.app.services.patients.activatePatient(
     patientId,
-    token
+    token,
   );
   if (response.error) {
     return error(400, response.error);
@@ -55,7 +54,7 @@ const getAll = async (request) => {
     const { hospital } = await verify(request.auth.credentials.token);
     const patients = await request.server.app.services.patients.getAll(
       query,
-      hospital
+      hospital,
     );
     const response = {
       count: patients.value ? patients.value.length : 0,
@@ -63,27 +62,27 @@ const getAll = async (request) => {
     };
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 const getPatientByHospital = async (request) => {
   const { id } = request.params;
   if (await confirmHospitalAdmin(request)) {
     const response = await request.server.app.services.patients.getPatientByID(
-      id
+      id,
     );
     if (response.error) {
       return error(400, response.error);
     }
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 const getPatient = async (request) => {
   const { id } = request.params;
   const response = await request.server.app.services.patients.getPatientByID(
-    id
+    id,
   );
   if (response.error) {
     return error(400, response.error);
@@ -95,7 +94,7 @@ const resetPassword = async (request) => {
   const { patient } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.patients.resetPassword(
     request.payload,
-    patient
+    patient,
   );
   if (response.error) {
     return error(400, response.error);
@@ -111,7 +110,7 @@ const updatePatient = async (request) => {
   }
   const response = await request.server.app.services.patients.updatePatient(
     payload,
-    patient
+    patient,
   );
   if (response.error) {
     return error(400, response.error);
@@ -123,14 +122,14 @@ const deactivatePatient = async (request) => {
   if (await confirmHospitalAdmin(request)) {
     const { id } = request.params;
     const response = await request.server.app.services.patients.deletePatient(
-      id
+      id,
     );
     if (response.error) {
       return error(400, response.error);
     }
     return response;
   }
-  return error(403, "Unauthorized");
+  return error(403, 'Unauthorized');
 };
 
 module.exports = {
