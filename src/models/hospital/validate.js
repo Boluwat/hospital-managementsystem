@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 async function validateHospital(val) {
-  const Hospital= mongoose.model('Hospital');
+  const Hospital = mongoose.model('Hospital');
   try {
     const hospital = await Hospital.findById(val).lean().exec();
     return Boolean(hospital);
@@ -11,5 +11,5 @@ async function validateHospital(val) {
 }
 
 module.exports = {
-    validateHospital
+  validateHospital,
 };

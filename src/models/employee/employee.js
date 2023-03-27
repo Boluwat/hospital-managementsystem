@@ -1,42 +1,42 @@
-const mongoose = require("mongoose");
-const { validateUser } = require("../user/validate");
-const { validateHospital } = require("../hospital/validate");
+const mongoose = require('mongoose');
+const { validateUser } = require('../user/validate');
+const { validateHospital } = require('../hospital/validate');
 // const { validateDepartment } = require("../department/validate");
-const { validateRole } = require("../role/validate");
+const { validateRole } = require('../role/validate');
 
 const employeeSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       index: true,
       required: true,
       validate: validateUser,
     },
     hospital: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Hospital",
+      ref: 'Hospital',
       index: true,
       required: true,
       validate: validateHospital,
     },
     department: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Department",
+      ref: 'Department',
       index: true,
       required: true,
       // validate: validateDepartment,
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Role",
+      ref: 'Role',
       index: true,
       required: true,
       validate: validateRole,
     },
     employementType: {
       type: String,
-      enum: ["CONTRACT", "FULLTIME"],
+      enum: ['CONTRACT', 'FULLTIME'],
     },
     email: {
       type: String,
@@ -62,14 +62,14 @@ const employeeSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "ACTIVE",
-      enum: ["ACTIVE", "SUSPENDED", "TERMINATED"],
+      default: 'ACTIVE',
+      enum: ['ACTIVE', 'SUSPENDED', 'TERMINATED'],
     },
   },
-  { strict: "throw", timestamps: true }
+  { strict: 'throw', timestamps: true },
 );
 
-const Employee = mongoose.model("Employee", employeeSchema);
+const Employee = mongoose.model('Employee', employeeSchema);
 module.exports = {
   Employee,
 };

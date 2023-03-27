@@ -1,14 +1,14 @@
-const mongoose = require("mongoose");
-const { validatePatient } = require("../patients/validate");
-const { validateDepartment } = require("../department/validate");
-const { validateHospital } = require("../hospital/validate");
-const { validateEmployee } = require("../employee/validate");
+const mongoose = require('mongoose');
+const { validatePatient } = require('../patients/validate');
+// const { validateDepartment } = require('../department/validate');
+const { validateHospital } = require('../hospital/validate');
+const { validateEmployee } = require('../employee/validate');
 
 const bookingSchema = new mongoose.Schema(
   {
     hospital: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Hospital",
+      ref: 'Hospital',
       index: true,
       sparse: true,
       validate: validateHospital,
@@ -16,7 +16,7 @@ const bookingSchema = new mongoose.Schema(
     departments: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Department",
+        ref: 'Department',
         index: true,
         sparse: true,
         // validate: validateDepartment,
@@ -24,7 +24,7 @@ const bookingSchema = new mongoose.Schema(
     ],
     patient: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Patient",
+      ref: 'Patient',
       index: true,
       required: true,
       validate: validatePatient,
@@ -34,21 +34,21 @@ const bookingSchema = new mongoose.Schema(
     },
     doctor: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Employee",
+      ref: 'Employee',
       index: true,
       sparse: true,
       validate: validateEmployee,
     },
     status: {
       type: String,
-      default: "Active",
-      enum: ["Active", "Cancelled"],
+      default: 'Active',
+      enum: ['Active', 'Cancelled'],
     },
   },
-  { strict: "throw", timestamps: true }
+  { strict: 'throw', timestamps: true },
 );
 
-const Appointment = mongoose.model("Appointment", bookingSchema);
+const Appointment = mongoose.model('Appointment', bookingSchema);
 module.exports = {
   Appointment,
 };

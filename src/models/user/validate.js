@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 async function validateUser(val) {
-  const User= mongoose.model('User');
+  const User = mongoose.model('User');
   try {
     const user = await User.findById(val).lean().exec();
     return Boolean(user);
@@ -11,5 +11,5 @@ async function validateUser(val) {
 }
 
 module.exports = {
-    validateUser
-}
+  validateUser,
+};

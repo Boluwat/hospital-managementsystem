@@ -1,7 +1,9 @@
-const { isValidObjectId } = require("mongoose");
-const constants = require("../utils/constant");
-const logger = require("../lib/logger");
-const { Appointment } = require("../models/booking");
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
+const { isValidObjectId } = require('mongoose');
+const constants = require('../utils/constant');
+const logger = require('../lib/logger');
+const { Appointment } = require('../models/booking');
 
 module.exports = {
   appointmentService() {
@@ -17,7 +19,7 @@ module.exports = {
           return { msg: constants.SUCCESS, appointmentId: booking._id };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -28,7 +30,7 @@ module.exports = {
         const booking = await Appointment.findOne({
           _id: id,
           patient,
-        }).populate("patient doctor", "fullname hospital cardNo, lastname");
+        }).populate('patient doctor', 'fullname hospital cardNo, lastname');
         if (!booking) {
           return { error: constants.NOT_FOUND };
         }
@@ -61,14 +63,14 @@ module.exports = {
             .skip(offset)
             .sort({ createdAt: -1 })
             .limit(limit)
-            .populate("patient doctor", "fullname hospital cardNo lastname");
+            .populate('patient doctor', 'fullname hospital cardNo lastname');
           return {
             totalCounts,
             value,
           };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -81,14 +83,14 @@ module.exports = {
           const booking = await Appointment.findOneAndUpdate(
             { _id: id },
             payload,
-            { new: true }
+            { new: true },
           );
 
           if (!booking) return { error: constants.NOT_FOUND };
           return booking;
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };

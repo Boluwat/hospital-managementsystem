@@ -1,13 +1,13 @@
-const { error } = require("../lib/error");
-const constants = require("../utils/constant");
-const { verify, confirmHospitalAdmin } = require("../utils/tokenizer");
+const { error } = require('../lib/error');
+const constants = require('../utils/constant');
+const { verify, confirmHospitalAdmin } = require('../utils/tokenizer');
 
 const create = async (request) => {
   const booking = request.payload;
   const { patient } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.appointments.create(
     booking,
-    patient
+    patient,
   );
   if (response.error) {
     return error(400, response.error);
@@ -20,7 +20,7 @@ const getAppointment = async (request) => {
   const { patient } = await verify(request.auth.credentials.token);
   const response = await request.server.app.services.appointments.getById(
     id,
-    patient
+    patient,
   );
   if (response.error) {
     return error(400, response.error);
@@ -30,13 +30,13 @@ const getAppointment = async (request) => {
 
 const getAll = async (request) => {
   if (!(await confirmHospitalAdmin(request))) {
-    return error(403, "Unauthorized");
+    return error(403, 'Unauthorized');
   }
   const { query } = request;
   const { patient } = await verify(request.auth.credentials.token);
   const booking = await request.server.app.services.appointments.getAll(
     query,
-    patient
+    patient,
   );
   const response = {
     count: booking.value ? booking.value.length : 0,
@@ -56,7 +56,7 @@ const update = async (request) => {
   }
   const response = await request.server.app.services.appointments.update(
     id,
-    payload
+    payload,
   );
   if (response.error) {
     return error(400, response.error);
@@ -68,5 +68,5 @@ module.exports = {
   create,
   getAppointment,
   getAll,
-  update
+  update,
 };

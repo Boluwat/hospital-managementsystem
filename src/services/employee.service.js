@@ -1,8 +1,10 @@
-const { isValidObjectId } = require("mongoose");
-const { Employee } = require("../models/employee");
-const logger = require("../lib/logger");
-const constants = require("../utils/constant");
-const { hashManager } = require("../utils/bcrypt");
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
+const { isValidObjectId } = require('mongoose');
+const { Employee } = require('../models/employee');
+const logger = require('../lib/logger');
+const constants = require('../utils/constant');
+const { hashManager } = require('../utils/bcrypt');
 
 module.exports = {
   employeeService() {
@@ -24,7 +26,7 @@ module.exports = {
           return { msg: constants.SUCCESS, employeeId: newEmployee._id };
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -39,15 +41,15 @@ module.exports = {
           if (!employee) return { error: constants.NOT_FOUND };
           const validatePassword = await hashManager().compare(
             payload.password,
-            employee.password
+            employee.password,
           );
           if (validatePassword) {
-            return {employeeId: employee._id };
+            return { employeeId: employee._id };
           }
           return constants.INVALID_USER;
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -72,7 +74,7 @@ module.exports = {
         }
         const totalCounts = await Employee.countDocuments(query);
         const value = await Employee.find(query)
-          .populate("hospital user role", "hosptalName firstname, lastname name")
+          .populate('hospital user role', 'hosptalName firstname, lastname name')
           .skip(offset)
           .sort({ createdAt: -1 })
           .limit(limit);
@@ -86,7 +88,7 @@ module.exports = {
         const employee = await Employee.findOne({
           _id: id,
           hospital,
-        }).populate("hospital user role", "hospitalName firstname lastname name");
+        }).populate('hospital user role', 'hospitalName firstname lastname name');
         if (!employee) return { error: constants.NOT_FOUND };
         return employee;
       },
@@ -100,13 +102,13 @@ module.exports = {
             payload,
             {
               new: true,
-            }
-          ).populate("hospital", "hospitalName");
+            },
+          ).populate('hospital', 'hospitalName');
           if (!employee) return { error: constants.NOT_FOUND };
           return employee;
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
         }
@@ -120,14 +122,14 @@ module.exports = {
               _id: id,
               hospital,
             },
-            { status: "TERMINATED" },
-            { new: true }
+            { status: 'TERMINATED' },
+            { new: true },
           );
           if (!employee) return { error: constants.NOT_FOUND };
           return { msg: constants.SUCCESS };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -138,14 +140,14 @@ module.exports = {
           if (!isValidObjectId(id)) return { error: constants.NOT_FOUND };
           const employee = await Employee.findOneAndUpdate(
             { _id: id, hospital },
-            { status: "SUSPENDED" },
-            { new: true }
+            { status: 'SUSPENDED' },
+            { new: true },
           );
           if (!employee) return { error: constants.NOT_FOUND };
           return { message: constants.SUCCESS };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };

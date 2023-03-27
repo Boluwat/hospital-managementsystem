@@ -1,6 +1,6 @@
-const { Admin } = require("./admin");
+const { Admin } = require('./admin');
 
 module.exports = {
-  schemaName: "Admin",
+  schemaName: 'Admin',
   Admin,
 };

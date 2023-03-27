@@ -1,12 +1,13 @@
-const { isValidObjectId } = require("mongoose");
-const { Hospital } = require("../models/hospital");
-const { User } = require("../models/user");
-const logger = require("../lib/logger");
-const constants = require("../utils/constant");
+const { isValidObjectId } = require('mongoose');
+const { Hospital } = require('../models/hospital');
+const { User } = require('../models/user');
+const logger = require('../lib/logger');
+const constants = require('../utils/constant');
 
 async function checkIfHospitalExist(hospital) {
   const hospitalExist = await Hospital.findOne({
-    $or: [{ email: hospital.email }, { mobile: hospital.mobile }, {hospitalName: hospital.hospitalName}],
+    $or: [{ email: hospital.email },
+      { mobile: hospital.mobile }, { hospitalName: hospital.hospitalName }],
   });
   return hospitalExist;
 }
@@ -29,7 +30,7 @@ module.exports = {
           return { error: constants.DUPLICATE_HOSPITAL };
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -56,8 +57,8 @@ module.exports = {
         try {
           if (!isValidObjectId(hospitalId)) return constants.NOT_FOUND;
           const hospital = await Hospital.findById(hospitalId).populate(
-            "users",
-            "fistname lastname"
+            'users',
+            'fistname lastname',
           );
           if (!hospital) {
             return {
@@ -67,7 +68,7 @@ module.exports = {
           return hospital;
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -82,7 +83,7 @@ module.exports = {
           payload,
           {
             new: true,
-          }
+          },
         );
 
         if (hospitalUpdate) {

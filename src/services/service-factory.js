@@ -5,8 +5,8 @@ const {
   adminService,
   employeeService,
   patientService,
-  appointmentService
-} = require(".");
+  appointmentService,
+} = require('.');
 
 const createServices = () => ({
   roles: roleService(),
@@ -15,7 +15,7 @@ const createServices = () => ({
   admin: adminService(),
   employees: employeeService(),
   patients: patientService(),
-  appointments: appointmentService()
+  appointments: appointmentService(),
 });
 
 module.exports = {

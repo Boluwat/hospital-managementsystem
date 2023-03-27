@@ -1,17 +1,20 @@
-const config = require("config");
-const { isValidObjectId } = require("mongoose");
-const logger = require("../lib/logger");
-const { User } = require("../models/user");
-const constants = require("../utils/constant");
-const { hashManager } = require("../utils/bcrypt");
-const { sign } = require("../utils/tokenizer");
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
+const config = require('config');
+const { isValidObjectId } = require('mongoose');
+const logger = require('../lib/logger');
+const { User } = require('../models/user');
+const constants = require('../utils/constant');
+const { hashManager } = require('../utils/bcrypt');
+const { sign } = require('../utils/tokenizer');
 
 async function getResponse(user) {
-  const { hospitalService } = require(".");
+  // eslint-disable-next-line global-require
+  const { hospitalService } = require('.');
   let onboardingDone = true;
   if (user.role.toString() === config.migrationIDS.HOSPITAL_ADMIN_ID) {
     const hospital = await hospitalService().getHospitalById(user.hospital);
-    onboardingDone = !hospital ? false : true;
+    onboardingDone = !!hospital;
   }
   user = user.toObject();
   const option = {};
@@ -46,12 +49,12 @@ module.exports = {
     return {
       async isAdmin(type, user, hospital) {
         if (!isValidObjectId(user)) return false;
-        if (type !== "main" && !isValidObjectId(hospital)) return false;
+        if (type !== 'main' && !isValidObjectId(hospital)) return false;
         const query = {
           _id: user,
-          status: "ACTIVE",
+          status: 'ACTIVE',
         };
-        if (type === "main") {
+        if (type === 'main') {
           query.role = { $in: config.migrationIDS.ADMIN_ROLE_IDS };
           query.isAdmin = true;
         } else {
@@ -66,8 +69,7 @@ module.exports = {
         try {
           const validation = await checkUserExist(user);
           if (!validation) {
-            const token =
-              Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
+            const token = Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
             user.token = token;
             if (!user.password) user.password = user.email;
             user.password = await hashManager().hash(user.password);
@@ -80,7 +82,7 @@ module.exports = {
           return { error: constants.DUPLICATE_USER };
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -97,12 +99,12 @@ module.exports = {
             },
             {
               activated: true,
-              status: "ACTIVE",
+              status: 'ACTIVE',
             },
             {
               new: true,
-            }
-          ).populate("hospital", "_id hospitalName");
+            },
+          ).populate('hospital', '_id hospitalName');
 
           if (updateUser) {
             return await getResponse(updateUser);
@@ -110,7 +112,7 @@ module.exports = {
           return { error: constants.INVALID_TOKEN };
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           return { error: constants.GONE_BAD };
@@ -123,7 +125,7 @@ module.exports = {
               { email: user.userEmailMobile },
               { mobile: user.userEmailMobile },
             ],
-          }).populate("hospital", "_id hospitalName");
+          }).populate('hospital', '_id hospitalName');
 
           if (!dbUser) {
             return { error: constants.INVALID_USER };
@@ -131,12 +133,11 @@ module.exports = {
           const { _id } = dbUser;
           const validatePassword = await hashManager().compare(
             user.password,
-            dbUser.password
+            dbUser.password,
           );
           if (dbUser && validatePassword) {
             if (!dbUser.activated) {
-              const token =
-                Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
+              const token = Math.floor(Math.random() * 90000) + constants.TOKEN_RANGE;
               await User.findOneAndUpdate(
                 {
                   $or: [
@@ -145,7 +146,7 @@ module.exports = {
                   ],
                 },
                 { token },
-                { new: true }
+                { new: true },
               );
               return {
                 error: {
@@ -163,13 +164,15 @@ module.exports = {
           };
         } catch (ex) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: ex,
           });
           throw new Error(ex.message);
         }
       },
-      async getAll({ offset = 0, limit = 100, status, activated } = {}) {
+      async getAll({
+        offset = 0, limit = 100, status, activated,
+      } = {}) {
         const query = {};
         if (status) {
           query.status = status;
@@ -180,12 +183,13 @@ module.exports = {
         const totalCounts = await User.countDocuments(query);
         const value = [];
         const response = await User.find(query)
-          .populate("hospital", "_id hospitalName")
+          .populate('hospital', '_id hospitalName')
           .select()
           .skip(offset)
           .sort({ createdAt: -1 })
           .limit(limit);
         for (let index = 0; index < response.length; index += 1) {
+          // eslint-disable-next-line no-await-in-loop
           value.push((await getResponse(response[index])).user);
         }
         return {
@@ -205,7 +209,7 @@ module.exports = {
           return (await getResponse(user)).user;
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -218,7 +222,7 @@ module.exports = {
           const updateUser = await User.findOneAndUpdate(
             { _id: userId },
             { password },
-            { new: true }
+            { new: true },
           );
           if (updateUser) {
             return { msg: constants.SUCCESS };
@@ -226,7 +230,7 @@ module.exports = {
           return { error: constants.GONE_BAD };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -238,7 +242,7 @@ module.exports = {
           const updateUser = await User.findOneAndUpdate(
             { _id: userId },
             user,
-            { new: true }
+            { new: true },
           );
           if (updateUser) {
             return (await getResponse(updateUser)).user;
@@ -246,7 +250,7 @@ module.exports = {
           return { error: constants.INVALID_USER };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };
@@ -261,13 +265,13 @@ module.exports = {
           }
           const validatePassword = await hashManager().compare(
             password,
-            user.password
+            user.password,
           );
           if (validatePassword) {
             const updateUser = await User.findOneAndUpdate(
               { _id: userId },
-              { status: "INACTIVE", activated: false },
-              { new: true }
+              { status: 'INACTIVE', activated: false },
+              { new: true },
             );
             if (updateUser) {
               return { msg: constants.SUCCESS };
@@ -276,7 +280,7 @@ module.exports = {
           return { error: constants.INVALID_USER };
         } catch (error) {
           logger.log({
-            level: "error",
+            level: 'error',
             message: error,
           });
           return { error: constants.GONE_BAD };

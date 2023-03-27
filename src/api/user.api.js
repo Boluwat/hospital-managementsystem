@@ -1,16 +1,17 @@
-const Joi = require("joi");
-const namespace = require("hapijs-namespace");
+/* eslint-disable import/no-extraneous-dependencies */
+const Joi = require('joi');
+const namespace = require('hapijs-namespace');
 
-const { userControllers } = require("../controllers");
+const { userControllers } = require('../controllers');
 
 module.exports = (server, prefix) => {
   namespace(server, prefix, [
     {
-      method: "Post",
-      path: "/login",
+      method: 'Post',
+      path: '/login',
       config: {
-        description: "sign in",
-        tags: ["api", "user"],
+        description: 'sign in',
+        tags: ['api', 'user'],
         validate: {
           payload: Joi.object({
             userEmailMobile: Joi.string()
@@ -60,17 +61,17 @@ module.exports = (server, prefix) => {
     //   },
     // },
     {
-      method: "Post",
-      path: "/reset-password",
+      method: 'Post',
+      path: '/reset-password',
       config: {
-        description: "reset user password",
-        tags: ["api", "user"],
-        auth: "simple",
+        description: 'reset user password',
+        tags: ['api', 'user'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
             newPassword: Joi.string()
               .required()
-              .description("new user password"),
+              .description('new user password'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -80,14 +81,14 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/activate/{userId}/{token}/user",
+      method: 'Get',
+      path: '/activate/{userId}/{token}/user',
       config: {
-        description: "activate account",
-        tags: ["api", "users"],
+        description: 'activate account',
+        tags: ['api', 'users'],
         validate: {
           params: Joi.object({
-            token: Joi.number().description("token"),
+            token: Joi.number().description('token'),
             userId: Joi.string().max(24).min(24),
           }),
           failAction: async (request, h, err) => {
@@ -98,15 +99,16 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/{id}",
+      method: 'Get',
+      path: '/{id}',
       config: {
-        description: "get user by id",
-        tags: ["api", "user"],
-        auth: "simple",
+        description: 'get user by id',
+        tags: ['api', 'user'],
+        auth: 'simple',
         validate: {
           params: Joi.object({
-            id: Joi.string().required().min(24).max(24).description("user id"),
+            id: Joi.string().required().min(24).max(24)
+              .description('user id'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -116,17 +118,17 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/",
+      method: 'Get',
+      path: '/',
       config: {
-        description: "get all users",
-        tags: ["api", "user"],
-        auth: "simple",
+        description: 'get all users',
+        tags: ['api', 'user'],
+        auth: 'simple',
         validate: {
           query: Joi.object({
             limit: Joi.number(),
             offset: Joi.number(),
-            status: Joi.string().optional().valid("ACTIVE", "INACTIVE"),
+            status: Joi.string().optional().valid('ACTIVE', 'INACTIVE'),
             activated: Joi.boolean().optional(),
           }),
           failAction: async (request, h, err) => {
@@ -137,17 +139,17 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Patch",
-      path: "/hospital/user",
+      method: 'Patch',
+      path: '/hospital/user',
       config: {
-        description: "update a hospital user",
-        tags: ["api", "users"],
-        auth: "simple",
+        description: 'update a hospital user',
+        tags: ['api', 'users'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
-            gender: Joi.string().optional().example("Jeti"),
-            dob: Joi.string().optional().example("Jeti"),
-            mobile: Joi.string().optional().example("Jeti"),
+            gender: Joi.string().optional().example('Jeti'),
+            dob: Joi.string().optional().example('Jeti'),
+            mobile: Joi.string().optional().example('Jeti'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -157,12 +159,12 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Delete",
-      path: "/user",
+      method: 'Delete',
+      path: '/user',
       config: {
-        description: "delete a user",
-        tags: ["api", "users"],
-        auth: "simple",
+        description: 'delete a user',
+        tags: ['api', 'users'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
             password: Joi.string().required(),

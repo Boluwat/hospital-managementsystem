@@ -1,17 +1,18 @@
-const Joi = require("joi");
-const namespace = require("hapijs-namespace");
+/* eslint-disable import/no-extraneous-dependencies */
+const Joi = require('joi');
+const namespace = require('hapijs-namespace');
 
-const { appointmentControllers } = require("../controllers");
+const { appointmentControllers } = require('../controllers');
 
 module.exports = (server, prefix) => {
   namespace(server, prefix, [
     {
-      method: "Post",
-      path: "/book",
+      method: 'Post',
+      path: '/book',
       config: {
-        description: "book an appointment",
-        tags: ["api", "booking"],
-        auth: "simple",
+        description: 'book an appointment',
+        tags: ['api', 'booking'],
+        auth: 'simple',
         validate: {
           payload: Joi.object({
             date: Joi.string().required(),
@@ -26,19 +27,19 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/{id}",
+      method: 'Get',
+      path: '/{id}',
       config: {
-        description: "get an appointmentid",
-        tags: ["api", "booking"],
-        auth: "simple",
+        description: 'get an appointmentid',
+        tags: ['api', 'booking'],
+        auth: 'simple',
         validate: {
           params: Joi.object({
             id: Joi.string()
               .required()
               .min(24)
               .max(24)
-              .description("appointment id"),
+              .description('appointment id'),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -48,20 +49,20 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Get",
-      path: "/",
+      method: 'Get',
+      path: '/',
       config: {
-        description: "get all apppointment",
-        tags: ["api", "booking"],
-        auth: "simple",
+        description: 'get all apppointment',
+        tags: ['api', 'booking'],
+        auth: 'simple',
         validate: {
           query: Joi.object({
-            limit: Joi.number().description("max number  to be fetch"),
-            offset: Joi.number().description("number of items to be skipped"),
-            status: Joi.string().description("status of the employee"),
+            limit: Joi.number().description('max number  to be fetch'),
+            offset: Joi.number().description('number of items to be skipped'),
+            status: Joi.string().description('status of the employee'),
             date: Joi.string().optional(),
             hospital: Joi.string().max(24).min(24),
-            departments: Joi.string().max(24).min(24)
+            departments: Joi.string().max(24).min(24),
           }),
           failAction: async (request, h, err) => {
             throw err;
@@ -71,19 +72,19 @@ module.exports = (server, prefix) => {
       },
     },
     {
-      method: "Patch",
-      path: "/{id}",
+      method: 'Patch',
+      path: '/{id}',
       config: {
-        description: "get an appointmentid",
-        tags: ["api", "booking"],
-        auth: "simple",
+        description: 'get an appointmentid',
+        tags: ['api', 'booking'],
+        auth: 'simple',
         validate: {
           params: Joi.object({
             id: Joi.string()
               .required()
               .min(24)
               .max(24)
-              .description("appointment id"),
+              .description('appointment id'),
           }),
           payload: Joi.object({
             date: Joi.string().optional(),
