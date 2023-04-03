@@ -85,7 +85,7 @@ module.exports = (server, prefix) => {
       path: '/activate/{userId}/{token}/user',
       config: {
         description: 'activate account',
-        tags: ['api', 'users'],
+        tags: ['api', 'user'],
         validate: {
           params: Joi.object({
             token: Joi.number().description('token'),
@@ -143,7 +143,7 @@ module.exports = (server, prefix) => {
       path: '/hospital/user',
       config: {
         description: 'update a hospital user',
-        tags: ['api', 'users'],
+        tags: ['api', 'user'],
         auth: 'simple',
         validate: {
           payload: Joi.object({
@@ -163,7 +163,7 @@ module.exports = (server, prefix) => {
       path: '/user',
       config: {
         description: 'delete a user',
-        tags: ['api', 'users'],
+        tags: ['api', 'user'],
         auth: 'simple',
         validate: {
           payload: Joi.object({

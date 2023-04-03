@@ -5,6 +5,7 @@ const adminControllers = require('./admin.controllers');
 const patientControllers = require('./patient.controller');
 const employeeControllers = require('./employee.controllers');
 const appointmentControllers = require('./appointment.controller');
+const wardControllers = require('./ward.controller');
 
 module.exports = {
   roleControllers,
@@ -14,4 +15,5 @@ module.exports = {
   patientControllers,
   employeeControllers,
   appointmentControllers,
+  wardControllers,
 };

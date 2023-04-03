@@ -100,7 +100,7 @@ module.exports = (server, prefix) => {
       path: '/hospital/{id}',
       config: {
         description: 'get patient by id',
-        tags: ['api', 'Patient'],
+        tags: ['api', 'patient'],
         auth: 'simple',
         validate: {
           params: Joi.object({
@@ -122,7 +122,7 @@ module.exports = (server, prefix) => {
       path: '/{id}',
       config: {
         description: 'get patient by id',
-        tags: ['api', 'Patient'],
+        tags: ['api', 'patient'],
         validate: {
           params: Joi.object({
             id: Joi.string()
@@ -142,8 +142,8 @@ module.exports = (server, prefix) => {
       method: 'Get',
       path: '/',
       config: {
-        description: 'get all users',
-        tags: ['api', 'user'],
+        description: 'get all patient',
+        tags: ['api', 'patient'],
         auth: 'simple',
         validate: {
           query: Joi.object({

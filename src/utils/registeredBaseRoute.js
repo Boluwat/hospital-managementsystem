@@ -5,6 +5,7 @@ const {
   patientApi,
   employeeApi,
   appointmentApi,
+  wardRoomApi,
 } = require('../api');
 
 module.exports = (server) => {
@@ -14,4 +15,5 @@ module.exports = (server) => {
   patientApi(server, '/v1/patient');
   employeeApi(server, '/v1/employee');
   appointmentApi(server, '/v1/booking');
+  wardRoomApi(server, '/v1/ward');
 };

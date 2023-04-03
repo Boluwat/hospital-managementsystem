@@ -1,28 +1,44 @@
 const mongoose = require('mongoose');
+const { validatePatient } = require('../patients/validate');
+const { validateHospital } = require('../hospital/validate');
 
-const roleSchema = new mongoose.Schema({
+const wardSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    index: {
-      unique: true,
-    },
   },
-  description: {
-    type: String,
-    required: true,
+  capacity: {
+    type: Number,
   },
-  isHospitalMgt: {
-    type: Boolean,
-    default: false,
-  },
-  status: {
+  roomStatus: {
     type: Boolean,
     default: true,
   },
+  hospital: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Hospital',
+    index: true,
+    required: true,
+    validate: validateHospital,
+  },
+  patients: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Patient',
+      index: true,
+      sparse: true,
+      default: [],
+      validate: validatePatient,
+    },
+  ],
+
 }, { strict: 'throw', timestamps: true });
 
-const Role = mongoose.model('Role', roleSchema);
+// eslint-disable-next-line prefer-arrow-callback, func-names
+// wardSchema.virtual('capacity').get(function () {
+//   return 3 - this.patients.length;
+// });
+
+const WardRoom = mongoose.model('WardRoom', wardSchema);
 module.exports = {
-  Role,
+  WardRoom,
 };

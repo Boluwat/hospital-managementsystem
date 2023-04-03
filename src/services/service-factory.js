@@ -6,6 +6,7 @@ const {
   employeeService,
   patientService,
   appointmentService,
+  wardService,
 } = require('.');
 
 const createServices = () => ({
@@ -16,6 +17,7 @@ const createServices = () => ({
   employees: employeeService(),
   patients: patientService(),
   appointments: appointmentService(),
+  wards: wardService(),
 });
 
 module.exports = {

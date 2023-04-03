@@ -4,6 +4,7 @@ const userApi = require('./user.api');
 const patientApi = require('./patients.api');
 const employeeApi = require('./employee.api');
 const appointmentApi = require('./appointment.api');
+const wardRoomApi = require('./ward.api');
 
 module.exports = {
   roleApi,
@@ -12,4 +13,5 @@ module.exports = {
   patientApi,
   employeeApi,
   appointmentApi,
+  wardRoomApi,
 };

@@ -104,7 +104,7 @@ module.exports = (server, prefix) => {
       path: '/',
       config: {
         description: 'delete hospital',
-        tags: ['api', 'hospitals'],
+        tags: ['api', 'hospital'],
         auth: 'simple',
         validate: {
           payload: Joi.object({

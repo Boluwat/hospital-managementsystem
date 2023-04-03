@@ -5,6 +5,7 @@ const { adminService } = require('./admin.service');
 const { employeeService } = require('./employee.service');
 const { patientService } = require('./patients');
 const { appointmentService } = require('./appointment.service');
+const { wardService } = require('./ward.service');
 
 module.exports = {
   roleService,
@@ -14,4 +15,5 @@ module.exports = {
   employeeService,
   patientService,
   appointmentService,
+  wardService,
 };

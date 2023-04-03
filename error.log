@@ -420,3 +420,46 @@
 {"level":"error","message":{"code":11000,"index":0,"keyPattern":{"mobile":1},"keyValue":{"mobile":"09080516192"}}}
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected reserved word"}
 {"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token ';'"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing catch or finally after try"}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"isImmutableError":false,"path":"_allowInternals"}}
+{"level":"error","message":{"_message":"WardRoom validation failed","errors":{"patients":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"[]\" (type Array) at path \"patients\" because of \"BSONTypeError\"","name":"CastError","path":"patients","reason":{},"stringValue":"\"[]\"","value":[],"valueType":"Array"}},"message":"WardRoom validation failed: patients: Cast to ObjectId failed for value \"[]\" (type Array) at path \"patients\" because of \"BSONTypeError\"","name":"ValidationError"}}
+{"level":"error","message":{"_message":"WardRoom validation failed","errors":{"patients":{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"[]\" (type Array) at path \"patients\" because of \"BSONTypeError\"","name":"CastError","path":"patients","reason":{},"stringValue":"\"[]\"","value":[],"valueType":"Array"}},"message":"WardRoom validation failed: patients: Cast to ObjectId failed for value \"[]\" (type Array) at path \"patients\" because of \"BSONTypeError\"","name":"ValidationError"}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Unexpected token '{'"}
+{"level":"error","message":{}}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing catch or finally after try"}
+{"level":"error","message":"failed to start server:::::SyntaxError: Missing catch or finally after try"}
+{"level":"error","message":{}}
+{"level":"error","message":{}}
